@@ -1,0 +1,8 @@
+.profile__avatar {
+  min-height: 127px;
+  min-width: 168.75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px 0 0;
+}

@@ -1,0 +1,6 @@
+.profile__name-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 165px 0 0;
+}
