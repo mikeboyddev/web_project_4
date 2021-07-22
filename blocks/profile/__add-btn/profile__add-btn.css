@@ -8,3 +8,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 600px) {
+  .profile__add-btn {
+    min-width: 282px;
+  }
+}

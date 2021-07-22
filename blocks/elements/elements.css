@@ -3,4 +3,19 @@
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 20px;
   column-gap: 17px;
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 1190px) {
+  .elements {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .elements {
+    grid-template-columns: 1fr;
+    column-gap: 0px;
+  }
 }

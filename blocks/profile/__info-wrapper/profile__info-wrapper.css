@@ -1,6 +1,5 @@
-.profile__name-wrapper {
+.profile__info-wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0 165px 0 0;
+  flex-direction: column;
+  margin: 26.25px 0 36px 0;
 }

@@ -1,0 +1,7 @@
+.profile__add {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 24px;
+  flex-grow: 1;
+}

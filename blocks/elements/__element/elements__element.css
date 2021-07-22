@@ -1,5 +1,14 @@
 .elements__element {
   background-color: #ffffff;
   border-radius: 10px;
-  min-height: 361px;
+  max-height: 361px;
+  list-style-type: none;
+  max-width: 282px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .elements__element {
+    margin: 0 auto;
+  }
 }
