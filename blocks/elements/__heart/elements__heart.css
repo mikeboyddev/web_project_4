@@ -2,3 +2,7 @@
   margin: 0;
   align-self: flex-end;
 }
+
+.elements__heart:hover {
+  opacity: 0.5;
+}

@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.profile__add-btn:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 600px) {
   .profile__add-btn {
     min-width: 282px;
