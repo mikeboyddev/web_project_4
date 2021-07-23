@@ -1,0 +1,21 @@
+.modal__button {
+  background: none;
+  color: #ffffff;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  z-index: -10;
+  outline: none;
+  border-style: none;
+}
+
+.modal__button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 600px) {
+  .modal__button {
+    right: -10px;
+    top: -45px;
+  }
+}

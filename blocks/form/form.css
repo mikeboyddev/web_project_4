@@ -1,0 +1,5 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 36px 25px 36px;
+}

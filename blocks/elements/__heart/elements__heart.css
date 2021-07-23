@@ -1,8 +1,15 @@
 .elements__heart {
   margin: 0;
   align-self: flex-end;
+  height: 20px;
+  width: 20px;
 }
 
 .elements__heart:hover {
   opacity: 0.5;
+}
+
+.elements__heart:active {
+  background-image: url(../../../images/heart-full.svg);
+  opacity: 1;
 }

@@ -12,6 +12,8 @@
       <img src="./images/header-logo.svg" alt="logo" class="header__image" />
     </header>
 
+    <div class="line"></div>
+
     <section class="profile container container_size_small">
       <div class="profile__avatar">
         <img
@@ -22,7 +24,7 @@
       </div>
       <div class="profile__info-wrapper">
         <div class="profile__name-wrapper">
-          <h1 class="profile__name">Jacques Coustea</h1>
+          <h1 class="profile__name js-profile-name">Jacques Coustea</h1>
           <div class="profile__edit-btn">
             <img
               alt="edit-btn-crayon"
@@ -32,7 +34,7 @@
           </div>
         </div>
 
-        <p class="profile__occupation">Explorer</p>
+        <p class="profile__occupation js-profile-occupation">Explorer</p>
       </div>
 
       <div class="profile__add">
@@ -55,7 +57,11 @@
         />
         <div class="elements__name">
           <p class="elements__title">Yosemite Valley</p>
-          <img src="/images/heart.svg" alt="heart" class="elements__heart" />
+          <img
+            src="/images/heart.svg"
+            alt="heart"
+            class="elements__heart"
+          ></img>
         </div>
       </li>
 
@@ -112,6 +118,42 @@
       <p class="footer__text">&copy 2021 Around The U.S.</p>
     </footer>
 
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__button">
+          <img
+            src="/images/close-btn-small.svg"
+            alt="close me"
+            class="modal__cross"
+          />
+        </button>
+
+        <form action="#" class="form" id="modal-edit-form">
+          <label class="form__label">Edit Profile:</label>
+          <input
+            class="form__input"
+            name="name"
+            type="text"
+            value="Jacques Costeau"
+            id="modal-name-input"
+          />
+          <div class="form__border"></div>
+
+          <input
+            class="form__input"
+            name="occupation"
+            type="text"
+            value="Explorer"
+            id="modal-occupation-input"
+          />
+          <div class="form__border"></div>
+
+          <button class="form__button">
+            <span class="form__save">Save</span>
+          </button>
+        </form>
+      </div>
+    </div>
     <script src="scripts/script.js"></script>
   </body>
 </html>
