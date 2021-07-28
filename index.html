@@ -12,144 +12,192 @@
       <img src="./images/header-logo.svg" alt="logo" class="header__image" />
     </header>
 
-    <div class="line"></div>
+    <main>
+      <div class="line"></div>
 
-    <section class="profile container container_size_small">
-      <div class="profile__avatar">
-        <img
-          alt="profile-image"
-          class="profile__image"
-          src="./images/profile__image.png"
-        />
-      </div>
-      <div class="profile__info-wrapper">
-        <div class="profile__name-wrapper">
-          <h1 class="profile__name js-profile-name">Jacques Coustea</h1>
-          <div class="profile__edit-btn">
-            <img
-              alt="edit-btn-crayon"
-              class="profile__crayon"
-              src="./images/profile__crayon.svg"
-            />
+      <section class="profile container container_size_small">
+        <div class="profile__avatar">
+          <img
+            alt="profile-image"
+            class="profile__image"
+            src="./images/profile__image.png"
+          />
+        </div>
+        <div class="profile__info-wrapper">
+          <div class="profile__name-wrapper">
+            <h1 class="profile__name">Jacques Coustea</h1>
+            <button class="button profile__edit-btn" aria-label="Edit">
+              <img
+                alt="edit-btn-crayon"
+                class="profile__crayon"
+                src="./images/profile__crayon.svg"
+              />
+            </button>
           </div>
+
+          <p class="profile__occupation">Explorer</p>
         </div>
 
-        <p class="profile__occupation js-profile-occupation">Explorer</p>
-      </div>
-
-      <div class="profile__add">
-        <div class="profile__add-btn">
+        <button class="button profile__add-btn" aria-label="Add">
           <img
             alt="add-btn-cross"
             class="profile__cross"
             src="./images/profile__cross.svg"
           />
+        </button>
+      </section>
+
+      <section class="elements container">
+        <div class="elements__element">
+          <img
+            alt="yosemite"
+            src="./images/yosemite.png"
+            class="elements__image"
+          />
+          <div class="elements__name">
+            <h2 class="elements__title">Yosemite Valley</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="heart"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="elements__element">
+          <img
+            alt="lake louise"
+            src="./images/lake-louise.png"
+            class="elements__image"
+          />
+          <div class="elements__name">
+            <h2 class="elements__title">Lake Louise</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="heart"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="elements__element">
+          <img
+            alt="bald mountains"
+            src="./images/bald-mtns.png"
+            class="elements__image"
+          />
+          <div class="elements__name">
+            <h2 class="elements__title">Bald Mountains</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="heart"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="elements__element">
+          <img
+            alt="latemar"
+            src="./images/latemar.png"
+            class="elements__image"
+          />
+          <div class="elements__name">
+            <h2 class="elements__title">Latemar</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="heart"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="elements__element">
+          <img
+            alt="vanoise"
+            src="./images/vanoise.png"
+            class="elements__image"
+          />
+          <div class="elements__name">
+            <h2 class="elements__title">Vanoise National Park</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="heart"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="elements__element">
+          <img alt="lago" src="./images/lago.png" class="elements__image" />
+          <div class="elements__name">
+            <h2 class="elements__title">Lago di Braies</h2>
+            <button type="button" class="button">
+              <img
+                src="./images/heart.svg"
+                alt="lago"
+                class="elements__heart"
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal">
+        <div class="modal__container">
+          <button class="button modal__button" type="button" aria-label="Close">
+            <img
+              src="./images/close-btn.svg"
+              alt="close me"
+              class="modal__cross"
+            />
+          </button>
+
+          <form
+            action="#"
+            class="form"
+            id="modal-edit-form"
+            name="modal-edit-form"
+          >
+            <h2 class="form__label">Edit Profile:</h2>
+            <input
+              class="form__input"
+              name="name"
+              type="text"
+              value="Jacques Costeau"
+              id="modal-name-input"
+            />
+
+            <input
+              class="form__input"
+              name="occupation"
+              type="text"
+              value="Explorer"
+              id="modal-occupation-input"
+            />
+
+            <button class="button form__button form__save" aria-label="Save">
+              Save
+            </button>
+          </form>
         </div>
       </div>
-    </section>
-
-    <ul class="elements container">
-      <li class="elements__element">
-        <img
-          alt="yosemite"
-          src="./images/yosemite.png"
-          class="elements__image"
-        />
-        <div class="elements__name">
-          <p class="elements__title">Yosemite Valley</p>
-          <img src="./images/heart.svg" alt="heart" class="elements__heart" />
-        </div>
-      </li>
-
-      <li class="elements__element">
-        <img
-          alt="lake louise"
-          src="./images/lake-louise.png"
-          class="elements__image"
-        />
-        <div class="elements__name">
-          <p class="elements__title">Lake Louise</p>
-          <img src="./images/heart.svg" alt="heart" class="elements__heart" />
-        </div>
-      </li>
-
-      <li class="elements__element">
-        <img
-          alt="bald mountains"
-          src="./images/bald-mtns.png"
-          class="elements__image"
-        />
-        <div class="elements__name">
-          <p class="elements__title">Bald Mountains</p>
-          <img src="./images/heart.svg" alt="heart" class="elements__heart" />
-        </div>
-      </li>
-
-      <li class="elements__element">
-        <img alt="latemar" src="./images/latemar.png" class="elements__image" />
-        <div class="elements__name">
-          <p class="elements__title">Latemar</p>
-          <img src="./images/heart.svg" alt="heart" class="elements__heart" />
-        </div>
-      </li>
-
-      <li class="elements__element">
-        <img alt="vanoise" src="./images/vanoise.png" class="elements__image" />
-        <div class="elements__name">
-          <p class="elements__title">Vanoise National Park</p>
-          <img src="./images/heart.svg" alt="heart" class="elements__heart" />
-        </div>
-      </li>
-
-      <li class="elements__element">
-        <img alt="lago" src="./images/lago.png" class="elements__image" />
-        <div class="elements__name">
-          <p class="elements__title">Lago di Braies</p>
-          <img src="./images/heart.svg" alt="lago" class="elements__heart" />
-        </div>
-      </li>
-    </ul>
+    </main>
 
     <footer class="footer container">
-      <p class="footer__text">&copy 2021 Around The U.S.</p>
+      <p class="footer__text">&copy; 2021 Around The U.S.</p>
     </footer>
 
-    <div class="modal">
-      <div class="modal__container">
-        <button class="modal__button">
-          <img
-            src="./images/close-btn-small.svg"
-            alt="close me"
-            class="modal__cross"
-          />
-        </button>
-
-        <form action="#" class="form" id="modal-edit-form">
-          <label class="form__label">Edit Profile:</label>
-          <input
-            class="form__input"
-            name="name"
-            type="text"
-            value="Jacques Costeau"
-            id="modal-name-input"
-          />
-          <div class="form__border"></div>
-
-          <input
-            class="form__input"
-            name="occupation"
-            type="text"
-            value="Explorer"
-            id="modal-occupation-input"
-          />
-          <div class="form__border"></div>
-
-          <button class="form__button">
-            <span class="form__save">Save</span>
-          </button>
-        </form>
-      </div>
-    </div>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

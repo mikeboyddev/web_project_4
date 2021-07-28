@@ -2,8 +2,8 @@
   background: none;
   color: #ffffff;
   position: absolute;
-  top: -50px;
-  right: -50px;
+  top: -36px;
+  right: -36px;
   z-index: -10;
   outline: none;
   border-style: none;
@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 600px) {
   .modal__button {
-    right: -10px;
+    right: 0px;
     top: -45px;
   }
 }

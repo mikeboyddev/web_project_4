@@ -1,5 +1,6 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
+@import url(../blocks/button/button.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/footer/footer.css);
@@ -32,7 +33,5 @@
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__label/form__label.css);
 @import url(../blocks/form/__save/form__save.css);
-@import url(../blocks/form/__border/form__border.css);
-@import url(../blocks/line/line.css);
 @import url(../blocks/container/container.css);
 @import url(../blocks/container/_size/container__size_small.css);

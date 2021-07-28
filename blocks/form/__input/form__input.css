@@ -7,4 +7,7 @@
   letter-spacing: 0em;
   text-align: left;
   border-style: none;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #000000;
+  padding: 0px 0px 14px 0px;
 }
