@@ -3,7 +3,7 @@
   min-width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 705px) {
   .modal__cross {
     max-height: 26px;
     max-width: 26px;

@@ -13,8 +13,6 @@
     </header>
 
     <main>
-      <div class="line"></div>
-
       <section class="profile container container_size_small">
         <div class="profile__avatar">
           <img
@@ -26,7 +24,11 @@
         <div class="profile__info-wrapper">
           <div class="profile__name-wrapper">
             <h1 class="profile__name">Jacques Coustea</h1>
-            <button class="button profile__edit-btn" aria-label="Edit">
+            <button
+              class="button profile__edit-btn"
+              aria-label="Edit"
+              type="button"
+            >
               <img
                 alt="edit-btn-crayon"
                 class="profile__crayon"
@@ -38,7 +40,7 @@
           <p class="profile__occupation">Explorer</p>
         </div>
 
-        <button class="button profile__add-btn" aria-label="Add">
+        <button class="button profile__add-btn" aria-label="Add" type="button">
           <img
             alt="add-btn-cross"
             class="profile__cross"
@@ -186,9 +188,7 @@
               id="modal-occupation-input"
             />
 
-            <button class="button form__button form__save" aria-label="Save">
-              Save
-            </button>
+            <button class="button form__button" aria-label="Save">Save</button>
           </form>
         </div>
       </div>

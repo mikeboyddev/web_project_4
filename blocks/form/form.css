@@ -4,7 +4,7 @@
   padding: 36px 36px 25px 36px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 705px) {
   .form {
     padding: 25px 22px 25px 22px;
   }

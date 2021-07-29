@@ -5,7 +5,7 @@
   position: relative;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 705px) {
   .modal__container {
     margin: auto 0;
     width: 282px;

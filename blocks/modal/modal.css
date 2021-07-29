@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 705px) {
   .modal {
     margin: auto 0;
   }
