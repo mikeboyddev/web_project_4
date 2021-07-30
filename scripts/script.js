@@ -9,8 +9,8 @@ const cardOccupation = document.querySelector('.profile__occupation')
 
 function enableModal() {
   modalEl.classList.add('modal_enabled')
-  cardName.textContent = modalNameInput.value
-  cardOccupation.textContent = modalOccupationInput.value
+  modalNameInput.value = cardName.textContent
+  modalOccupationInput.value = cardOccupation.textContent
 }
 
 function disableModal() {
