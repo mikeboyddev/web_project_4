@@ -2,6 +2,6 @@
   background-color: #ffffff;
   border-radius: 10px;
   list-style-type: none;
-  max-width: 282px;
+  min-width: 282px;
   margin: 0 auto;
 }

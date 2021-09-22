@@ -49,111 +49,7 @@
         </button>
       </section>
 
-      <section class="elements container">
-        <div class="elements__element">
-          <img
-            alt="yosemite"
-            src="./images/yosemite.png"
-            class="elements__image"
-          />
-          <div class="elements__name">
-            <h2 class="elements__title">Yosemite Valley</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="heart"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div class="elements__element">
-          <img
-            alt="lake louise"
-            src="./images/lake-louise.png"
-            class="elements__image"
-          />
-          <div class="elements__name">
-            <h2 class="elements__title">Lake Louise</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="heart"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div class="elements__element">
-          <img
-            alt="bald mountains"
-            src="./images/bald-mtns.png"
-            class="elements__image"
-          />
-          <div class="elements__name">
-            <h2 class="elements__title">Bald Mountains</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="heart"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div class="elements__element">
-          <img
-            alt="latemar"
-            src="./images/latemar.png"
-            class="elements__image"
-          />
-          <div class="elements__name">
-            <h2 class="elements__title">Latemar</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="heart"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div class="elements__element">
-          <img
-            alt="vanoise"
-            src="./images/vanoise.png"
-            class="elements__image"
-          />
-          <div class="elements__name">
-            <h2 class="elements__title">Vanoise National Park</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="heart"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div class="elements__element">
-          <img alt="lago" src="./images/lago.png" class="elements__image" />
-          <div class="elements__name">
-            <h2 class="elements__title">Lago di Braies</h2>
-            <button type="button" class="button">
-              <img
-                src="./images/heart.svg"
-                alt="lago"
-                class="elements__heart"
-              />
-            </button>
-          </div>
-        </div>
-      </section>
+      <ul class="elements__list container"></ul>
 
       <div class="modal">
         <div class="modal__container">
@@ -197,6 +93,18 @@
     <footer class="footer container">
       <p class="footer__text">&copy; 2021 Around The U.S.</p>
     </footer>
+
+    <template id="card-template">
+      <li class="elements__element">
+        <div class="elements__image"></div>
+        <div class="elements__name">
+          <h2 class="elements__title"></h2>
+          <button type="button" class="button">
+            <img src="./images/heart.svg" alt="heart" class="elements__heart" />
+          </button>
+        </div>
+      </li>
+    </template>
 
     <script src="./scripts/script.js"></script>
   </body>
