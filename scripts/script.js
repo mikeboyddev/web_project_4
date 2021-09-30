@@ -40,7 +40,7 @@ const cardName = document.querySelector('.profile__name')
 const cardOccupation = document.querySelector('.profile__occupation')
 const addModalBtn = document.querySelector('.profile__add-btn')
 const addModalCloseBtn = document.querySelector('.button_type_add')
-const addModalSubmit = document.querySelector('#modal-add-form')
+const addCardForm = document.querySelector('#modal-add-form')
 const previewPicCloseBtn = document.querySelector('.button_type_preview')
 
 //Inputs
@@ -52,6 +52,11 @@ const addUrlInput = document.querySelector('#modal-url-input')
 //functions
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
+}
+
+function resetForm() {
+  addCardForm.reset()
+  return false
 }
 
 //Event Listeners
@@ -88,7 +93,7 @@ addModalSubmit.addEventListener('submit', function (e) {
   const newCardElement = generateCard(newCard)
   renderCard(newCardElement, placesList)
   toggleModalWindow(addModalWindow)
-  editProfileForm.reset()
+  resetForm()
 })
 
 //Templates
