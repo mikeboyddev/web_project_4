@@ -51,7 +51,7 @@
 
       <ul class="elements__list container"></ul>
 
-      <div class="modal">
+      <div class="modal modal_type_edit">
         <div class="modal__container">
           <button class="button modal__button" type="button" aria-label="Close">
             <img
@@ -88,6 +88,71 @@
           </form>
         </div>
       </div>
+
+      <div class="modal modal_type_add">
+        <div class="modal__container">
+          <button
+            class="button modal__button button-close_type_add"
+            type="button"
+            aria-label="Close"
+          >
+            <img
+              src="./images/close-btn.svg"
+              alt="close me"
+              class="modal__cross"
+            />
+          </button>
+
+          <form
+            action="#"
+            class="form"
+            id="modal-add-form"
+            name="modal-add-form"
+          >
+            <h2 class="form__label">New Place</h2>
+            <input
+              class="form__input add_type_place"
+              name="place"
+              type="text"
+              value="Title"
+              id="modal-place-input"
+            />
+
+            <input
+              class="form__input add_type_image"
+              name="url"
+              type="text"
+              value="Image Link"
+              id="modal-url-input"
+            />
+
+            <button
+              class="button form__button button_type_create"
+              aria-label="Save"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal pic-preview">
+        <div class="modal__container modal__content_type_preview">
+          <button
+            class="button modal__button button-close_type_preview"
+            type="button"
+            aria-label="Close"
+          >
+            <img
+              src="./images/close-btn.svg"
+              alt="close me"
+              class="modal__cross"
+            />
+          </button>
+          <img class="modal__preview-image" src="''" alt="img" />
+          <div class="modal__pic-name"></div>
+        </div>
+      </div>
     </main>
 
     <footer class="footer container">
@@ -96,11 +161,24 @@
 
     <template id="card-template">
       <li class="elements__element">
-        <div class="elements__image"></div>
+        <div class="elements__image">
+          <button type="button" class="button">
+            <img
+              src="./images/delete-button.svg"
+              alt="delete"
+              class="elements__delete delete-button"
+            />
+          </button>
+        </div>
         <div class="elements__name">
           <h2 class="elements__title"></h2>
+
           <button type="button" class="button">
-            <img src="./images/heart.svg" alt="heart" class="elements__heart" />
+            <img
+              src="./images/heart.svg"
+              alt="heart"
+              class="elements__heart like-button"
+            />
           </button>
         </div>
       </li>

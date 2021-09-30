@@ -1,0 +1,14 @@
+.modal__content_type_preview {
+  background-color: transparent;
+  max-height: 75vh;
+  max-width: 75vw;
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+  .modal__content_type_preview {
+    width: 50%;
+  }
+}
