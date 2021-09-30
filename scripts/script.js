@@ -83,8 +83,8 @@ previewPicCloseBtn.addEventListener('click', () =>
   toggleModalWindow(picPreview)
 )
 
-//addModalSubmit still needs work, the values from input are not showing in the arry
-addModalSubmit.addEventListener('submit', function (e) {
+//addModalSubmit
+addCardForm.addEventListener('submit', function (e) {
   e.preventDefault()
   const newCard = {
     name: addPlaceInput.value,
