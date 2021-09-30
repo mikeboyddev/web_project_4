@@ -29,7 +29,7 @@ const initialCards = [
 const editModalWindow = document.querySelector('.modal_type_edit')
 const addModalWindow = document.querySelector('.modal_type_add')
 const modalEditBtn = document.querySelector('.profile__edit-btn')
-const placesList = document.querySelector('.elements__list')
+const placesList = document.querySelector('.elements')
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
 
@@ -39,9 +39,9 @@ const modalFormEl = document.querySelector('#modal-edit-form')
 const cardName = document.querySelector('.profile__name')
 const cardOccupation = document.querySelector('.profile__occupation')
 const addModalBtn = document.querySelector('.profile__add-btn')
-const addModalCloseBtn = document.querySelector('.button-close_type_add')
+const addModalCloseBtn = document.querySelector('.button_type_add')
 const addModalSubmit = document.querySelector('#modal-add-form')
-const previewPicCloseBtn = document.querySelector('.button-close_type_preview')
+const previewPicCloseBtn = document.querySelector('.button_type_preview')
 
 //Inputs
 const modalNameInput = document.querySelector('#modal-name-input')
