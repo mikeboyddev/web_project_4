@@ -35,7 +35,7 @@ const previewImageElement = document.querySelector('.modal__preview-image')
 
 //Buttons
 const editModalCloseBtn = document.querySelector('.modal__button')
-const modalFormEl = document.querySelector('#modal-edit-form')
+const editProfileModal = document.querySelector('#modal-edit-form')
 const cardName = document.querySelector('.profile__name')
 const cardOccupation = document.querySelector('.profile__occupation')
 const addModalBtn = document.querySelector('.profile__add-btn')
@@ -51,19 +51,19 @@ const addUrlInput = document.querySelector('#modal-url-input')
 
 //functions
 function toggleModalWindow(modal) {
-  if (!modal.classList.contains('modal_enabled')) {
-    modalNameInput.value = cardName.textContent
-    modalOccupationInput.value = cardOccupation.textContent
-  }
   modal.classList.toggle('modal_enabled')
 }
 
 //Event Listeners
-modalEditBtn.addEventListener('click', () => toggleModalWindow(editModalWindow))
+modalEditBtn.addEventListener('click', function () {
+  modalNameInput.value = cardName.textContent
+  modalOccupationInput.value = cardOccupation.textContent
+  toggleModalWindow(editModalWindow)
+})
 editModalCloseBtn.addEventListener('click', () =>
   toggleModalWindow(editModalWindow)
 )
-modalFormEl.addEventListener('submit', function (e) {
+editProfileModal.addEventListener('submit', function (e) {
   e.preventDefault()
   cardName.textContent = modalNameInput.value
   cardOccupation.textContent = modalOccupationInput.value
@@ -88,7 +88,7 @@ addModalSubmit.addEventListener('submit', function (e) {
   const newCardElement = generateCard(newCard)
   renderCard(newCardElement, placesList)
   toggleModalWindow(addModalWindow)
-  return initialCards
+  editProfileForm.reset()
 })
 
 //Templates
@@ -107,6 +107,7 @@ function generateCard(card) {
   //handlePreviewPicture
   imageEl.addEventListener('click', function () {
     previewImageElement.src = card.link
+    previewImageElement.src = card.title
     toggleModalWindow(picPreview)
   })
 
@@ -129,10 +130,10 @@ function generateCard(card) {
 
 //render card function
 function renderCard(card, container) {
-  container.append(card)
+  container.prepend(card)
 }
 
-//Template setup?
+//Template setup
 initialCards.forEach(function (card) {
   const newCard = generateCard(card)
   renderCard(newCard, placesList)
