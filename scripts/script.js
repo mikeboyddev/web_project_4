@@ -107,7 +107,7 @@ function generateCard(card) {
   //handlePreviewPicture
   imageEl.addEventListener('click', function () {
     previewImageElement.src = card.link
-    previewImageElement.src = card.title
+    previewImageElement.alt = card.title
     toggleModalWindow(picPreview)
   })
 
