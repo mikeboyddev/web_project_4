@@ -44,14 +44,27 @@ const addCardForm = document.querySelector('#modal-add-form')
 const previewPicCloseBtn = document.querySelector('.button_type_preview')
 
 //Inputs
-const modalNameInput = document.querySelector('#modal-name-input')
-const modalOccupationInput = document.querySelector('#modal-occupation-input')
-const addPlaceInput = document.querySelector('#modal-place-input')
-const addUrlInput = document.querySelector('#modal-url-input')
+const modalNameInput = document.querySelector('.modal-name-input')
+const modalOccupationInput = document.querySelector('#description-input')
+const addPlaceInput = document.querySelector('#place-input')
+const addUrlInput = document.querySelector('#url-input')
 
 //functions
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
+
+  if (modal.classList.contains('modal_enabled')) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        modal.classList.remove('modal_enabled')
+      }
+    })
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains('modal')) {
+        modal.classList.remove('modal_enabled')
+      }
+    })
+  }
 }
 
 function resetForm() {

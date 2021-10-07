@@ -69,22 +69,36 @@
           >
             <h2 class="form__label">Edit Profile:</h2>
             <input
-              class="form__input"
+              id="name-input"
+              class="form__input modal-name-input"
               name="name"
               type="text"
               placeholder="Name"
-              id="modal-name-input"
+              maxlength="40"
+              minlength="2"
+              required
             />
+            <span id="name-input-error" class="form__error-message"></span>
 
             <input
               class="form__input"
               name="occupation"
               type="text"
               placeholder="Occupation"
-              id="modal-occupation-input"
+              id="description-input"
+              maxlength="200"
+              minlength="2"
+              required
             />
 
-            <button class="button form__button" aria-label="Save">Save</button>
+            <span
+              id="description-input-error"
+              class="form__error-message"
+            ></span>
+
+            <button class="button form__button" type="submit" aria-label="Save">
+              Save
+            </button>
           </form>
         </div>
       </div>
@@ -111,26 +125,31 @@
           >
             <h2 class="form__label">New Place</h2>
             <input
+              id="place-input"
               class="form__input form__input_type_place"
               name="place"
               type="text"
               placeholder="Title"
-              id="modal-place-input"
+              maxlength="30"
+              minlength="1"
               required
             />
+
+            <span id="place-input-error" class="form__error-message"></span>
 
             <input
               class="form__input form__input_type_image"
               name="url"
-              type="text"
+              type="url"
               placeholder="Image Link"
-              id="modal-url-input"
+              id="url-input"
               required
             />
-
+            <span id="url-input-error" class="form__error-message"></span>
             <button
               class="button form__button button_type_create"
               aria-label="Save"
+              type="submit"
             >
               Create
             </button>
@@ -187,5 +206,6 @@
     </template>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
