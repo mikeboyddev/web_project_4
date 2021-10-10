@@ -33,7 +33,6 @@ const placesList = document.querySelector('.elements')
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
 
-//Buttons
 const editModalCloseBtn = document.querySelector('.modal__button')
 const editProfileModal = document.querySelector('#modal-edit-form')
 const cardName = document.querySelector('.profile__name')
@@ -53,17 +52,24 @@ const addUrlInput = document.querySelector('#url-input')
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
 
+  function keyEvent(e) {
+    if (e.key === 'Escape') {
+      modal.classList.remove('modal_enabled')
+    }
+  }
+
+  function clickEvent(e) {
+    if (e.target.classList.contains('modal')) {
+      modal.classList.remove('modal_enabled')
+    }
+  }
+
   if (modal.classList.contains('modal_enabled')) {
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        modal.classList.remove('modal_enabled')
-      }
-    })
-    document.addEventListener('click', function (e) {
-      if (e.target.classList.contains('modal')) {
-        modal.classList.remove('modal_enabled')
-      }
-    })
+    document.addEventListener('keydown', keyEvent)
+    document.addEventListener('click', clickEvent)
+  } else {
+    document.removeEventListener('keydown', keyEvent)
+    document.removeEventListener('click', clickEvent)
   }
 }
 

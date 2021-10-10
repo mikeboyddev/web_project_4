@@ -20,12 +20,12 @@ const checkInputValidity = (formEl, input, settings) => {
   }
 }
 
-const hasValidInputs = (inputList) => {
+const bothInputsValid = (inputList) => {
   return inputList.every((input) => input.validity.valid === true)
 }
 
 const toggleButton = (inputList, button, settings) => {
-  if (hasValidInputs(inputList)) {
+  if (bothInputsValid(inputList)) {
     button.disabled = false
     button.classList.remove(settings.inactiveButtonClass)
   } else {
