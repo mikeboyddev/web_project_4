@@ -52,24 +52,24 @@ const addUrlInput = document.querySelector('#url-input')
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
 
-  function keyEvent(e) {
+  function handleEscapeKeyPress(e) {
     if (e.key === 'Escape') {
       modal.classList.remove('modal_enabled')
     }
   }
 
-  function clickEvent(e) {
+  function handleOutsideClick(e) {
     if (e.target.classList.contains('modal')) {
       modal.classList.remove('modal_enabled')
     }
   }
 
   if (modal.classList.contains('modal_enabled')) {
-    document.addEventListener('keydown', keyEvent)
-    document.addEventListener('click', clickEvent)
+    document.addEventListener('keydown', handleEscapeKeyPress)
+    document.addEventListener('click', handleOutsideClick)
   } else {
-    document.removeEventListener('keydown', keyEvent)
-    document.removeEventListener('click', clickEvent)
+    document.removeEventListener('keydown', handleEscapeKeyPress)
+    document.removeEventListener('click', handleOutsideClick)
   }
 }
 
