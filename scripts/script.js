@@ -33,8 +33,6 @@ const editModalWindow = document.querySelector('.modal_type_edit')
 const addModalWindow = document.querySelector('.modal_type_add')
 const modalEditBtn = document.querySelector('.profile__edit-btn')
 const placesList = document.querySelector('.elements')
-const picPreview = document.querySelector('.pic-preview')
-const previewImageElement = document.querySelector('.modal__preview-image')
 
 const editModalCloseBtn = document.querySelector('.modal__button')
 const editProfileModal = document.querySelector('#modal-edit-form')
@@ -43,7 +41,6 @@ const cardOccupation = document.querySelector('.profile__occupation')
 const addModalBtn = document.querySelector('.profile__add-btn')
 const addModalCloseBtn = document.querySelector('.button_type_add')
 const addCardForm = document.querySelector('#modal-add-form')
-const previewPicCloseBtn = document.querySelector('.button_type_preview')
 
 //Inputs
 const modalNameInput = document.querySelector('.modal-name-input')
@@ -56,6 +53,7 @@ const cardTitleInput = document.querySelector('.form__input_type_place').value
 const cardLinkInput = document.querySelector('.form__input_type_image').value
 
 //functions
+
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
 
@@ -105,9 +103,6 @@ addModalBtn.addEventListener('click', () => toggleModalWindow(addModalWindow))
 addModalCloseBtn.addEventListener('click', () =>
   toggleModalWindow(addModalWindow)
 )
-previewPicCloseBtn.addEventListener('click', () =>
-  toggleModalWindow(picPreview)
-)
 
 //addModalSubmit
 addCardForm.addEventListener('submit', function (e) {
@@ -128,7 +123,7 @@ const cardTemplate = document
   .content.querySelector('.elements__element')
 
 //generate card funtion
-/*function generateCard(card) {
+function generateCard(card) {
   const cardElement = cardTemplate.cloneNode(true)
 
   cardElement.querySelector('.elements__title').textContent = card.name
@@ -157,7 +152,7 @@ const cardTemplate = document
     })
 
   return cardElement
-}*/
+}
 
 //render card function
 function renderCard(data, container) {
@@ -167,12 +162,8 @@ function renderCard(data, container) {
 }
 
 //Template setup
-initialCards.forEach(function (card) {
-  const newCard = {
-    name: cardTitleInput.value,
-    link: cardLinkInput.value,
-  }
-  renderCard(newCard, placesList)
+initialCards.forEach((cardElement) => {
+  renderCard(cardElement, placesList)
 })
 
 //validation
