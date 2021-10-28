@@ -40,6 +40,7 @@ const cardName = document.querySelector('.profile__name')
 const cardOccupation = document.querySelector('.profile__occupation')
 const addModalBtn = document.querySelector('.profile__add-btn')
 const addModalCloseBtn = document.querySelector('.button_type_add')
+const picPreviewModalCloseBtn = document.querySelector('.button_type_preview')
 const addCardForm = document.querySelector('#modal-add-form')
 
 //Inputs
@@ -47,9 +48,8 @@ const modalNameInput = document.querySelector('.modal-name-input')
 const modalOccupationInput = document.querySelector('#description-input')
 const addPlaceInput = document.querySelector('#place-input')
 const addUrlInput = document.querySelector('#url-input')
-
+const picPreview = document.querySelector('.pic-preview')
 const cardTitleInput = document.querySelector('.form__input_type_place').value
-
 const cardLinkInput = document.querySelector('.form__input_type_image').value
 
 //functions
@@ -102,6 +102,10 @@ editProfileModal.addEventListener('submit', function (e) {
 addModalBtn.addEventListener('click', () => toggleModalWindow(addModalWindow))
 addModalCloseBtn.addEventListener('click', () =>
   toggleModalWindow(addModalWindow)
+)
+
+picPreviewModalCloseBtn.addEventListener('click', () =>
+  toggleModalWindow(picPreview)
 )
 
 //addModalSubmit
