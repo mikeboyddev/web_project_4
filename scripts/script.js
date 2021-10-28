@@ -53,117 +53,74 @@ const cardTitleInput = document.querySelector('.form__input_type_place').value
 const cardLinkInput = document.querySelector('.form__input_type_image').value
 
 //functions
-
-function toggleModalWindow(modal) {
-  modal.classList.toggle('modal_enabled')
-
-  function handleEscapeKeyPress(e) {
-    if (e.key === 'Escape') {
-      modal.classList.remove('modal_enabled')
-    }
-  }
-
-  function handleOutsideClick(e) {
-    if (e.target.classList.contains('modal')) {
-      modal.classList.remove('modal_enabled')
-    }
-  }
-
-  if (modal.classList.contains('modal_enabled')) {
-    document.addEventListener('keydown', handleEscapeKeyPress)
-    document.addEventListener('click', handleOutsideClick)
-  } else {
-    document.removeEventListener('keydown', handleEscapeKeyPress)
-    document.removeEventListener('click', handleOutsideClick)
-  }
-}
-
-function resetForm() {
-  addCardForm.reset()
-  return false
-}
-
-//Event Listeners
-modalEditBtn.addEventListener('click', function () {
+function openEditModal() {
   modalNameInput.value = cardName.textContent
   modalOccupationInput.value = cardOccupation.textContent
-  toggleModalWindow(editModalWindow)
-})
-editModalCloseBtn.addEventListener('click', () =>
-  toggleModalWindow(editModalWindow)
-)
-editProfileModal.addEventListener('submit', function (e) {
+  openModal(editModalWindow)
+}
+
+function editFormSubmit(e) {
   e.preventDefault()
   cardName.textContent = modalNameInput.value
   cardOccupation.textContent = modalOccupationInput.value
-  toggleModalWindow(editModalWindow)
-})
-
-addModalBtn.addEventListener('click', () => toggleModalWindow(addModalWindow))
-addModalCloseBtn.addEventListener('click', () =>
-  toggleModalWindow(addModalWindow)
-)
-
-picPreviewModalCloseBtn.addEventListener('click', () =>
-  toggleModalWindow(picPreview)
-)
-
-//addModalSubmit
-addCardForm.addEventListener('submit', function (e) {
-  e.preventDefault()
-  const newCard = {
-    name: addPlaceInput.value,
-    link: addUrlInput.value,
-  }
-  const newCardElement = generateCard(newCard)
-  renderCard(newCardElement, placesList)
-  toggleModalWindow(addModalWindow)
-  resetForm()
-})
-
-//Templates
-const cardTemplate = document
-  .querySelector('#card-template')
-  .content.querySelector('.elements__element')
-
-//generate card funtion
-function generateCard(card) {
-  const cardElement = cardTemplate.cloneNode(true)
-
-  cardElement.querySelector('.elements__title').textContent = card.name
-
-  const imageEl = cardElement.querySelector('.elements__image')
-  imageEl.style.backgroundImage = `url(${card.link})`
-  //handlePreviewPicture
-  imageEl.addEventListener('click', function () {
-    previewImageElement.src = card.link
-    previewImageElement.alt = card.title
-    toggleModalWindow(picPreview)
-  })
-
-  //handleLikeIcon
-  const likeButton = cardElement.querySelector('.like-button')
-  likeButton.addEventListener('click', function () {
-    likeButton.classList.toggle('elements__heart_active')
-  })
-  //handleDeleteCard
-  cardElement
-    .querySelector('.delete-button')
-    .addEventListener('click', function (evt) {
-      evt.stopPropagation()
-
-      cardElement.remove()
-    })
-
-  return cardElement
+  closeModal(editModalWindow)
 }
 
-//render card function
 function renderCard(data, container) {
   console.log('render')
   const card = new Card(data, '#card-template').generateCard()
   container.prepend(card)
 }
+
+function addFormSubmit(e) {
+  e.preventDefault()
+  const newCard = {
+    name: addPlaceInput.value,
+    link: addUrlInput.value,
+  }
+  renderCard(newCard, placesList)
+  closeModal(addModalWindow)
+  e.target.reset()
+}
+
+function openModal(modal) {
+  modal.classList.add('modal_enabled')
+  document.addEventListener('keydown', closeByEscape)
+  modal.addEventListener('click', handleOutsideClick)
+}
+
+function closeModal(modal) {
+  modal.classList.remove('modal_enabled')
+  document.removeEventListener('keydown', closeByEscape)
+  modal.removeEventListener('click', handleOutsideClick)
+}
+
+function handleOutsideClick(e) {
+  if (e.target.classList.contains('modal')) {
+    modal.classList.remove('modal_enabled')
+  }
+}
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.modal_enabled')
+    closeModal(openedPopup)
+  }
+}
+
+//Event Listeners
+modalEditBtn.addEventListener('click', openEditModal)
+editModalCloseBtn.addEventListener('click', () => closeModal(editModalWindow))
+editProfileModal.addEventListener('submit', editFormSubmit)
+addModalBtn.addEventListener('click', () => openModal(addModalWindow))
+addModalCloseBtn.addEventListener('click', () => closeModal(addModalWindow))
+picPreviewModalCloseBtn.addEventListener('click', () => closeModal(picPreview))
+addCardForm.addEventListener('submit', addFormSubmit)
+
+//Templates
+const cardTemplate = document
+  .querySelector('#card-template')
+  .content.querySelector('.elements__element')
 
 //Template setup
 initialCards.forEach((cardElement) => {

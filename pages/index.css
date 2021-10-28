@@ -31,6 +31,7 @@
 @import url(../blocks/modal/__cross/modal__cross.css);
 @import url(../blocks/modal/__container/_type/modal__container_type_preview.css);
 @import url(../blocks/modal/__preview-image/modal__preview-image.css);
+@import url(../blocks/modal/__pic-name/modal__pic-name.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__input/form__input.css);

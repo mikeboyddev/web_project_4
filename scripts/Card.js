@@ -1,5 +1,6 @@
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
+const previewNameElement = document.querySelector('.modal__pic-name')
 
 function toggleModalWindow(modal) {
   modal.classList.toggle('modal_enabled')
@@ -50,12 +51,14 @@ class Card {
 
   _handleDelete() {
     this._element.remove()
+    toggleModalWindow(picPreview)
   }
 
   _handlePreviewPicture() {
     toggleModalWindow(picPreview)
     previewImageElement.src = this._link
     previewImageElement.alt = this._name
+    previewNameElement.textContent = this._name
   }
 
   _setEventListeners() {
