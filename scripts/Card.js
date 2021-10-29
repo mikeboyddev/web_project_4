@@ -56,10 +56,10 @@ class Card {
   }
 
   _handlePreviewPicture() {
-    openModal(picPreview)
     previewImageElement.src = this._link
     previewImageElement.alt = this._name
     previewNameElement.textContent = this._name
+    openModal(picPreview)
   }
 
   _setEventListeners() {
@@ -77,8 +77,10 @@ class Card {
 
     this._element
       .querySelector('.elements__delete')
-      .addEventListener('click', () => {
+      .addEventListener('click', (e) => {
+        e.preventDefault()
         this._handleDelete()
+        e.stopPropagation()
       })
   }
 
