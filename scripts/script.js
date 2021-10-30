@@ -28,12 +28,11 @@ const initialCards = [
   },
 ]
 
-// Wrappers
+// Wrappers and inputs
 const editModalWindow = document.querySelector('.modal_type_edit')
 const addModalWindow = document.querySelector('.modal_type_add')
 const modalEditBtn = document.querySelector('.profile__edit-btn')
 const placesList = document.querySelector('.elements')
-
 const editModalCloseBtn = document.querySelector('.modal__button')
 const editProfileModal = document.querySelector('#modal-edit-form')
 const cardName = document.querySelector('.profile__name')
@@ -42,8 +41,6 @@ const addModalBtn = document.querySelector('.profile__add-btn')
 const addModalCloseBtn = document.querySelector('.button_type_add')
 const picPreviewModalCloseBtn = document.querySelector('.button_type_preview')
 const addCardForm = document.querySelector('#modal-add-form')
-
-//Inputs
 const modalNameInput = document.querySelector('.modal-name-input')
 const modalOccupationInput = document.querySelector('#description-input')
 const addPlaceInput = document.querySelector('#place-input')
@@ -66,6 +63,10 @@ function editFormSubmit(e) {
   closeModal(editModalWindow)
 }
 
+function openAddModal() {
+  openModal(addModalWindow)
+}
+
 function renderCard(data, container) {
   console.log('render')
   const card = new Card(data, '#card-template').generateCard()
@@ -79,11 +80,11 @@ function addFormSubmit(e) {
     link: addUrlInput.value,
   }
   renderCard(newCard, placesList)
-  closeModal(addModalWindow)
   e.target.reset()
+  closeModal(addModalWindow)
 }
 
-function openModal(modal) {
+export function openModal(modal) {
   modal.classList.add('modal_enabled')
   document.addEventListener('keydown', closeByEscape)
   modal.addEventListener('click', handleOutsideClick)
@@ -97,7 +98,7 @@ function closeModal(modal) {
 
 function handleOutsideClick(e) {
   if (e.target.classList.contains('modal')) {
-    modal.classList.remove('modal_enabled')
+    closeModal(e.target)
   }
 }
 
@@ -112,7 +113,7 @@ function closeByEscape(evt) {
 modalEditBtn.addEventListener('click', openEditModal)
 editModalCloseBtn.addEventListener('click', () => closeModal(editModalWindow))
 editProfileModal.addEventListener('submit', editFormSubmit)
-addModalBtn.addEventListener('click', () => openModal(addModalWindow))
+addModalBtn.addEventListener('click', openAddModal)
 addModalCloseBtn.addEventListener('click', () => closeModal(addModalWindow))
 picPreviewModalCloseBtn.addEventListener('click', () => closeModal(picPreview))
 addCardForm.addEventListener('submit', addFormSubmit)

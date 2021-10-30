@@ -1,32 +1,7 @@
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
 const previewNameElement = document.querySelector('.modal__pic-name')
-
-function openModal(modal) {
-  modal.classList.add('modal_enabled')
-  document.addEventListener('keydown', closeByEscape)
-  modal.addEventListener('click', handleOutsideClick)
-}
-
-function closeModal(modal) {
-  modal.classList.remove('modal_enabled')
-  document.removeEventListener('keydown', closeByEscape)
-  modal.removeEventListener('click', handleOutsideClick)
-}
-
-function handleOutsideClick(e) {
-  if (e.target.classList.contains('modal')) {
-    const openedPopup = document.querySelector('.modal_enabled')
-    closeModal(openedPopup)
-  }
-}
-
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.modal_enabled')
-    closeModal(openedPopup)
-  }
-}
+import { openModal } from './script.js'
 
 class Card {
   constructor(data, cardSelector) {
