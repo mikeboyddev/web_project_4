@@ -1,7 +1,7 @@
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
 const previewNameElement = document.querySelector('.modal__pic-name')
-import { openModal } from './script.js'
+import { openModal } from '../index.js'
 
 class Card {
   constructor(data, cardSelector) {
