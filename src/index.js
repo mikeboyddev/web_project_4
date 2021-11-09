@@ -45,28 +45,38 @@ const cardsList = new Section(
 
 cardsList.renderItems()
 
-const editPopup = new PopupWithForm({
-  popupEl: 'modal_type_edit',
-  handleFormSubmit: (e) => {
-    e.preventDefault()
-    cardName.textContent = modalNameInput.value
-    cardOccupation.textContent = modalOccupationInput.value
-    close(editModalWindow)
-  },
-})
+const newPopup = new Popup('.modal')
 
-/*const newCardPopup = new PopupWithForm({
-  popupEl: 'modal_type_add',
-  handleFormSubmit: (e) => {
-    e.preventDefault()
-    const addPlaceInput = addModalWindow.querySelector(
-      '.form__input_type_place'
-    )
-    const addUrlInput = addModalWindow.querySelector('.form__input_type_image')
-    renderCard({ name: addPlaceInput.value, link: addUrlInput.value })
-    close(addModalWindow)
+const editPopup = new PopupWithForm(
+  {
+    popupEl: 'modal_type_edit',
+    handleFormSubmit: (e) => {
+      e.preventDefault()
+      cardName.textContent = modalNameInput.value
+      cardOccupation.textContent = modalOccupationInput.value
+      // ?? close(editModalWindow)
+    },
   },
-})*/
+  '.modal_type_edit'
+)
+
+const newCardPopup = new PopupWithForm(
+  {
+    popupEl: 'modal_type_add',
+    handleFormSubmit: (e) => {
+      e.preventDefault()
+      const addPlaceInput = addModalWindow.querySelector(
+        '.form__input_type_place'
+      )
+      const addUrlInput = addModalWindow.querySelector(
+        '.form__input_type_image'
+      )
+      renderCard({ name: addPlaceInput.value, link: addUrlInput.value })
+      //  ?? close(addModalWindow)
+    },
+  },
+  '.modal_type_add'
+)
 
 // Wrappers and inputs
 const popupModal = document.querySelector('.modal')
@@ -151,13 +161,13 @@ function closeByEscape(evt) {
 }
 
 //Event Listeners
-modalEditBtn.addEventListener('click', openEditModal)
-editModalCloseBtn.addEventListener('click', () => closeModal(editModalWindow))
-editProfileModal.addEventListener('submit', editFormSubmit)
-addModalBtn.addEventListener('click', openAddModal)
-addModalCloseBtn.addEventListener('click', () => closeModal(addModalWindow))
-picPreviewModalCloseBtn.addEventListener('click', () => closeModal(picPreview))
-addCardForm.addEventListener('submit', addFormSubmit)
+//modalEditBtn.addEventListener('click', openEditModal)
+//editModalCloseBtn.addEventListener('click', () => closeModal(editModalWindow))
+//editProfileModal.addEventListener('submit', editFormSubmit)
+//addModalBtn.addEventListener('click', openAddModal)
+//addModalCloseBtn.addEventListener('click', () => closeModal(addModalWindow))
+//picPreviewModalCloseBtn.addEventListener('click', () => closeModal(picPreview))
+//addCardForm.addEventListener('submit', addFormSubmit)
 
 /*//Templates
 const cardTemplate = document

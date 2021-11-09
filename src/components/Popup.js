@@ -1,10 +1,12 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popupEl = document.querySelector(popupSelector)
+    console.log(popupSelector)
   }
 
   open() {
     this._popupEl.classList.add('modal_enabled')
+    console.log(this._popupEl)
     console.log(this._popupEl)
     document.addEventListener('keydown', (e) => {
       this._handleEscClose(e)
@@ -29,6 +31,8 @@ export default class Popup {
     this._popupEl.addEventlistener('click', (e) => {
       if (e.target.classList.contains('modal_enabled')) {
         this.close()
+      } else {
+        this.open()
       }
     })
   }
