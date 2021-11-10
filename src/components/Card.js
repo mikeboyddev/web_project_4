@@ -41,7 +41,7 @@ class Card {
     this._element
       .querySelector('.elements__image')
       .addEventListener('click', () => {
-        this._handleCardClick()
+        this._handleCardClick({ link: this._link, title: this._name })
       })
 
     this._element
