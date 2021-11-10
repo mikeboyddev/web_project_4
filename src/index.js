@@ -3,6 +3,7 @@ import Card from './components/Card.js'
 import Section from './components/Section.js'
 import Popup from './components/Popup.js'
 import PopupWithForm from './components/PopupWithForm.js'
+import PopupWithImage from './components/PopupWithImage.js'
 
 const initialCards = [
   {
@@ -35,17 +36,13 @@ const cardsList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, '.card-template')
+      const card = new Card(item, '.card-template', handleCardClick)
       const cardElement = card.generateCard()
       cardsList.setItem(cardElement)
     },
   },
   '.elements'
 )
-
-cardsList.renderItems()
-
-const newPopup = new Popup('.modal')
 
 const editPopup = new PopupWithForm(
   {
@@ -54,7 +51,6 @@ const editPopup = new PopupWithForm(
       e.preventDefault()
       cardName.textContent = modalNameInput.value
       cardOccupation.textContent = modalOccupationInput.value
-      // ?? close(editModalWindow)
     },
   },
   '.modal_type_edit'
@@ -63,20 +59,29 @@ const editPopup = new PopupWithForm(
 const newCardPopup = new PopupWithForm(
   {
     popupEl: 'modal_type_add',
-    handleFormSubmit: (e) => {
-      e.preventDefault()
+    handleFormSubmit: () => {
       const addPlaceInput = addModalWindow.querySelector(
         '.form__input_type_place'
       )
       const addUrlInput = addModalWindow.querySelector(
         '.form__input_type_image'
       )
-      renderCard({ name: addPlaceInput.value, link: addUrlInput.value })
-      //  ?? close(addModalWindow)
+      renderCard(
+        { name: addPlaceInput.value, link: addUrlInput.value },
+        cardsList
+      )
     },
   },
   '.modal_type_add'
 )
+
+const imagePopup = new PopupWithImage('.pic-preview')
+
+function handleCardClick() {
+  imagePopup.open()
+}
+
+cardsList.renderItems()
 
 // Wrappers and inputs
 const popupModal = document.querySelector('.modal')
@@ -102,52 +107,46 @@ const cardLinkInput = document.querySelector('.form__input_type_image').value
 
 //functions
 function openEditModal() {
-  modalNameInput.value = cardName.textContent
-  modalOccupationInput.value = cardOccupation.textContent
-  openModal(editModalWindow)
+  editPopup.open()
+  editPopup.setEventListeners()
 }
 
 function editFormSubmit(e) {
   e.preventDefault()
   cardName.textContent = modalNameInput.value
   cardOccupation.textContent = modalOccupationInput.value
-  closeModal(editModalWindow)
+  editPopup.close()
 }
 
 function openAddModal() {
-  openModal(addModalWindow)
+  newCardPopup.open()
+  newCardPopup.setEventListeners()
 }
 
 function renderCard(data, container) {
   console.log('render')
-  const card = new Card(data, '#card-template').generateCard()
-  container.prepend(card)
+  const card = new Card(data, '#card-template', handleCardClick).generateCard()
+  container.setItem(card)
 }
 
 function addFormSubmit(e) {
-  e.preventDefault()
-  const newCard = {
-    name: addPlaceInput.value,
-    link: addUrlInput.value,
-  }
-
-  e.target.reset()
-  closeModal(addModalWindow)
+  newCardPopup._handleFormSubmit(e)
+  newCardPopup.close()
 }
 
-export function openModal(modal) {
+/*export function openModal(modal) {
   modal.classList.add('modal_enabled')
   document.addEventListener('keydown', closeByEscape)
   modal.addEventListener('click', handleOutsideClick)
-}
+}*/
 
-function closeModal(modal) {
+/*function closeModal(modal) {
   modal.classList.remove('modal_enabled')
   document.removeEventListener('keydown', closeByEscape)
   modal.removeEventListener('click', handleOutsideClick)
-}
+}*/
 
-function handleOutsideClick(e) {
+/*function handleOutsideClick(e) {
   if (e.target.classList.contains('modal')) {
     closeModal(e.target)
   }
@@ -158,16 +157,16 @@ function closeByEscape(evt) {
     const openedPopup = document.querySelector('.modal_enabled')
     closeModal(openedPopup)
   }
-}
+} */
 
 //Event Listeners
-//modalEditBtn.addEventListener('click', openEditModal)
+modalEditBtn.addEventListener('click', openEditModal)
 //editModalCloseBtn.addEventListener('click', () => closeModal(editModalWindow))
-//editProfileModal.addEventListener('submit', editFormSubmit)
-//addModalBtn.addEventListener('click', openAddModal)
+editProfileModal.addEventListener('submit', editFormSubmit)
+addModalBtn.addEventListener('click', openAddModal)
 //addModalCloseBtn.addEventListener('click', () => closeModal(addModalWindow))
 //picPreviewModalCloseBtn.addEventListener('click', () => closeModal(picPreview))
-//addCardForm.addEventListener('submit', addFormSubmit)
+addCardForm.addEventListener('submit', addFormSubmit)
 
 /*//Templates
 const cardTemplate = document

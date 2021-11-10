@@ -7,7 +7,6 @@ export default class Popup {
   open() {
     this._popupEl.classList.add('modal_enabled')
     console.log(this._popupEl)
-    console.log(this._popupEl)
     document.addEventListener('keydown', (e) => {
       this._handleEscClose(e)
     })
@@ -28,11 +27,14 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popupEl.addEventlistener('click', (e) => {
-      if (e.target.classList.contains('modal_enabled')) {
+    this._popupEl.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('modal__cross')) {
         this.close()
-      } else {
-        this.open()
+      }
+    })
+    this._popupEl.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('modal')) {
+        this.close()
       }
     })
   }

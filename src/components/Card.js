@@ -1,14 +1,15 @@
 const picPreview = document.querySelector('.pic-preview')
 const previewImageElement = document.querySelector('.modal__preview-image')
 const previewNameElement = document.querySelector('.modal__pic-name')
-import { openModal } from '../index.js'
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name
     this._link = data.link
 
     this._cardSelector = cardSelector
+    console.log(cardSelector)
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate() {
@@ -30,18 +31,17 @@ class Card {
     this._element.remove()
   }
 
-  _handlePreviewPicture() {
+  /*_handlePreviewPicture() {
     previewImageElement.src = this._link
     previewImageElement.alt = this._name
     previewNameElement.textContent = this._name
-    openModal(picPreview)
-  }
+  }*/
 
   _setEventListeners() {
     this._element
       .querySelector('.elements__image')
       .addEventListener('click', () => {
-        this._handlePreviewPicture()
+        this._handleCardClick()
       })
 
     this._element
