@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the US</title>
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/header-logo.svg" alt="logo" class="header__image" />
+      <img
+        src="<%=require('./images/header-logo.svg')%>"
+        alt="logo"
+        class="header__image"
+      />
     </header>
 
     <main>
@@ -18,7 +21,7 @@
           <img
             alt="profile-image"
             class="profile__image"
-            src="./images/profile__image.png"
+            src="<%=require('./images/profile__image.png')%>"
           />
         </div>
         <div class="profile__info-wrapper">
@@ -32,7 +35,7 @@
               <img
                 alt="edit-btn-crayon"
                 class="profile__crayon"
-                src="./images/profile__crayon.svg"
+                src="<%=require('./images/profile__crayon.svg')%>"
               />
             </button>
           </div>
@@ -44,7 +47,7 @@
           <img
             alt="add-btn-cross"
             class="profile__cross"
-            src="./images/profile__cross.svg"
+            src="<%=require('./images/profile__cross.svg')%>"
           />
         </button>
       </section>
@@ -55,7 +58,7 @@
         <div class="modal__container">
           <button class="button modal__button" type="button" aria-label="Close">
             <img
-              src="./images/close-btn.svg"
+              src="<%=require('./images/close-btn.svg')%>"
               alt="close me"
               class="modal__cross"
             />
@@ -111,7 +114,7 @@
             aria-label="Close"
           >
             <img
-              src="./images/close-btn.svg"
+              src="<%=require('./images/close-btn.svg')%>"
               alt="close me"
               class="modal__cross"
             />
@@ -166,7 +169,7 @@
             aria-label="Close"
           >
             <img
-              src="./images/close-btn.svg"
+              src="<%=require('./images/close-btn.svg')%>"
               alt="close me"
               class="modal__cross pic-preview__cross"
             />
@@ -186,7 +189,7 @@
         <div class="elements__image">
           <button type="button" class="button">
             <img
-              src="./images/delete-button.svg"
+              src="<%=require('./images/delete-button.svg')%>"
               alt="delete"
               class="elements__delete delete-button"
             />
@@ -197,7 +200,7 @@
 
           <button type="button" class="button">
             <img
-              src="./images/heart.svg"
+              src="<%=require('./images/heart.svg')%>"
               alt="heart"
               class="elements__heart like-button"
             />
