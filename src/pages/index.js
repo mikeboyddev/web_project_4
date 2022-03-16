@@ -49,8 +49,8 @@ const newCardPopup = new PopupWithForm(
   {
     popupEl: 'modal_type_add',
     handleFormSubmit: (inputValues) => {
-      const addPlaceInput = inputValues.name
-      const addUrlInput = inputValues.link
+      const addPlaceInput = inputValues.place
+      const addUrlInput = inputValues.url
       renderCard({ name: addPlaceInput, link: addUrlInput }, cardsList)
     },
   },
