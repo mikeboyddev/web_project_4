@@ -1,16 +1,16 @@
-import './pages/index.css'
-import FormValidator from './components/FormValidator.js'
-import Card from './components/Card.js'
-import Section from './components/Section.js'
-import PopupWithForm from './components/PopupWithForm.js'
-import PopupWithImage from './components/PopupWithImage.js'
-import initialCards from './utils/initialCards.js'
+import '../pages/index.css'
+import FormValidator from '../components/FormValidator.js'
+import Card from '../components/Card.js'
+import Section from '../components/Section.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import initialCards from '../utils/initialCards.js'
 import {
   addModalWindow,
   modalEditBtn,
   editProfileModal,
-  cardName,
-  cardOccupation,
+  userName,
+  userOccupation,
   addModalBtn,
   addCardForm,
   modalNameInput,
@@ -18,7 +18,7 @@ import {
   formValidationConfig,
   editFormEl,
   addFormEl,
-} from './utils/constants.js'
+} from '../utils/constants.js'
 
 const cardsList = new Section(
   {
@@ -26,7 +26,7 @@ const cardsList = new Section(
     renderer: (item) => {
       const card = new Card(item, '.card-template', handleCardClick)
       const cardElement = card.generateCard()
-      cardsList.setItem(cardElement)
+      cardsList.addItem(cardElement)
     },
   },
   '.elements'
@@ -35,65 +35,60 @@ const cardsList = new Section(
 const editPopup = new PopupWithForm(
   {
     popupEl: 'modal_type_edit',
-    handleFormSubmit: (e) => {
+    handleFormSubmit: (inputValues) => {
       e.preventDefault()
-      cardName.textContent = modalNameInput.value
-      cardOccupation.textContent = modalOccupationInput.value
+      userName.textContent = inputValues.name
+      userOccupation.textContent = inputValues.occupation
     },
   },
   '.modal_type_edit'
 )
+editPopup.setEventListeners()
 
 const newCardPopup = new PopupWithForm(
   {
     popupEl: 'modal_type_add',
-    handleFormSubmit: (e) => {
-      e.preventDefault()
-      const addPlaceInput = addModalWindow.querySelector(
-        '.form__input_type_place'
-      )
-      const addUrlInput = addModalWindow.querySelector(
-        '.form__input_type_image'
-      )
-      renderCard(
-        { name: addPlaceInput.value, link: addUrlInput.value },
-        cardsList
-      )
+    handleFormSubmit: (inputValues) => {
+      const addPlaceInput = inputValues.name
+      const addUrlInput = inputValues.link
+      renderCard({ name: addPlaceInput, link: addUrlInput }, cardsList)
     },
   },
   '.modal_type_add'
 )
+newCardPopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.pic-preview')
+imagePopup.setEventListeners()
 
 cardsList.renderItems()
 
 function openEditModal() {
+  modalNameInput.value = userName.textContent
+  modalOccupationInput.value = userOccupation.textContent
   editPopup.open()
-  editPopup.setEventListeners()
 }
 
 function editFormSubmit(e) {
   e.preventDefault()
-  cardName.textContent = modalNameInput.value
-  cardOccupation.textContent = modalOccupationInput.value
+  userName.textContent = modalNameInput.value
+  userOccupation.textContent = modalOccupationInput.value
   editPopup.close()
 }
 
 function openAddModal() {
   newCardPopup.open()
-  newCardPopup.setEventListeners()
 }
 
 function renderCard(data, container) {
   console.log('render')
   const card = new Card(data, '#card-template', handleCardClick).generateCard()
-  container.setItem(card)
+  container.addItem(card)
 }
 
 function addFormSubmit(e) {
   e.preventDefault()
-  newCardPopup._handleFormSubmit(e)
+  newCardPopup._handleFormSubmit()
   newCardPopup.close()
 }
 

@@ -3,6 +3,7 @@ export default class UserInfo {
     this._nameSelector = nameSelector
     this._jobSelector = jobSelector
   }
+
   getUserInfo() {
     return {
       cardName: this._nameSelector.textContent,
