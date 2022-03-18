@@ -81,7 +81,6 @@ function openAddModal() {
 }
 
 function renderCard(data, container) {
-  console.log('render')
   const card = new Card(data, '#card-template', handleCardClick).generateCard()
   container.addItem(card)
 }
