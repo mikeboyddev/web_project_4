@@ -24,8 +24,6 @@ export default class Popup {
       if (evt.target.classList.contains('modal__cross')) {
         this.close()
       }
-    })
-    this._popupEl.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('modal')) {
         this.close()
       }

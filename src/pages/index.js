@@ -24,9 +24,7 @@ const cardsList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, '.card-template', handleCardClick)
-      const cardElement = card.generateCard()
-      cardsList.addItem(cardElement)
+      renderCard(item, cardsList)
     },
   },
   '.elements'
@@ -36,7 +34,6 @@ const editPopup = new PopupWithForm(
   {
     popupEl: 'modal_type_edit',
     handleFormSubmit: (inputValues) => {
-      e.preventDefault()
       userName.textContent = inputValues.name
       userOccupation.textContent = inputValues.occupation
     },
@@ -97,9 +94,7 @@ function handleCardClick(data) {
 
 //Event Listeners
 modalEditBtn.addEventListener('click', openEditModal)
-editProfileModal.addEventListener('submit', editFormSubmit)
 addModalBtn.addEventListener('click', openAddModal)
-addCardForm.addEventListener('submit', addFormSubmit)
 
 //validation
 
