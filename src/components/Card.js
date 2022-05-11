@@ -66,15 +66,14 @@ class Card {
   generateCard() {
     this._element = this._getTemplate()
     this._heartIcon = this._element.querySelector('.elements__heart')
-    this._pictureElement = this._element.querySelector('.elements__image-test')
-
-    this._pictureElement.src = this._imageLink
-
+    this._pictureElement = this._element.querySelector('.elements__image_test')
+    this._name = this._element.querySelector('.elements__title')
     this._setEventListeners()
-    //this._element.querySelector('.elements__title').textContent = this._name
-    //this._element.querySelector(
-    //  '.elements__image'
-    //).style.backgroundImage = `url(${this._link})`
+    this._element.querySelector('.elements__title').textContent = this._text
+    this._deleteIcon = this._element.querySelector('.elements__delete')
+    this._pictureElement.src = this._imageLink
+    this._pictureElement.alt = this._text
+
     return this._element
   }
 }

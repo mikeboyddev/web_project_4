@@ -1,18 +1,22 @@
+import { userName } from '../utils/constants'
+
 export default class UserInfo {
-  constructor({ nameSelector, jobSelector }) {
-    this._nameSelector = nameSelector
-    this._jobSelector = jobSelector
+  constructor({ userNameSelector, userJobSelector, pictureSelector }) {
+    this._profileName = document.querySelector(userNameSelector)
+    this._profileFunction = document.querySelector(userJobSelector)
+    this._picture = document.querySelector(pictureSelector)
   }
 
   getUserInfo() {
     return {
-      cardName: this._nameSelector.textContent,
-      cardOccupation: this._jobSelector.textContent,
+      userName: this._profileName.textContent,
+      userJob: this._profileFunction.textContent,
     }
   }
 
-  setUserInfo(nameSelector, jobSelector) {
-    this._nameSelector.textContent = nameSelector
-    this._aboutSelector.textContent = jobSelector
+  setUserInfo({ userName, userJob, userAvatar }) {
+    this._profileName.textContent = userName
+    this._profileFunction.textContent = userJob
+    this._picture.src = userAvatar
   }
 }
