@@ -4,7 +4,7 @@ import Card from '../components/Card.js'
 import Section from '../components/Section.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
-import initialCards from '../utils/initialCards.js'
+
 import {
   addModalWindow,
   modalEditBtn,
@@ -19,16 +19,60 @@ import {
   editFormEl,
   addFormEl,
 } from '../utils/constants.js'
+import Api from '../components/Api'
 
-const cardsList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      renderCard(item, cardsList)
-    },
+export const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
+  headers: {
+    authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
+    'Content-Type': 'application/json',
   },
-  '.elements'
-)
+})
+
+let section
+let currentId
+let popupConfirmation
+let toggleLike
+
+api
+  .initialize()
+  .then((res) => {
+    const [user, data] = res
+    section = new Section(
+      {
+        items: data,
+        renderer: (item) => {
+          currentId = user._id
+          const element = renderCard(
+            {
+              text: item.name,
+              imageLink: item.link,
+              likes: item.likes,
+              owner: item.owner._id,
+              _id: item._id,
+              currentId,
+            },
+            '#card-template',
+            handleCardClick,
+            popupConfirmation,
+            toggleLike
+          )
+          section.addItem(element)
+        },
+      },
+      '.elements'
+    )
+    section.renderItems()
+
+    userInfo.setUserInfo({
+      userName: user.name,
+      userJob: user.about,
+      userAvatar: user.avatar,
+    })
+  })
+  .catch((err) => {
+    console.log(err) // log the error to the console
+  })
 
 const editPopup = new PopupWithForm(
   {
@@ -58,7 +102,7 @@ newCardPopup.setEventListeners()
 const imagePopup = new PopupWithImage('.pic-preview')
 imagePopup.setEventListeners()
 
-cardsList.renderItems()
+//cardsList.renderItems()
 
 function openEditModal() {
   modalNameInput.value = userName.textContent
@@ -77,9 +121,9 @@ function openAddModal() {
   newCardPopup.open()
 }
 
-function renderCard(data, container) {
-  const card = new Card(data, '#card-template', handleCardClick).generateCard()
-  container.addItem(card)
+function renderCard(data, template, callback, popupConfirmation, toggleLike) {
+  const card = new Card(data, template, callback, popupConfirmation, toggleLike)
+  return card.generateCard()
 }
 
 function addFormSubmit(e) {

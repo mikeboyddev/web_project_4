@@ -3,11 +3,23 @@ const previewImageElement = document.querySelector('.modal__preview-image')
 const previewNameElement = document.querySelector('.modal__pic-name')
 
 class Card {
-  constructor(data, cardSelector, handleCardClick) {
-    this._name = data.name
-    this._link = data.link
+  constructor(
+    data,
+    cardSelector,
+    handleCardClick,
+    popupConfirmation,
+    toggleLike
+  ) {
+    this._text = data.text
+    this._imageLink = data.imageLink
+    this._likes = data.likes
     this._cardSelector = cardSelector
     this._handleCardClick = handleCardClick
+    this._popupConfirmation = popupConfirmation
+    this._ownerId = data.owner
+    this.id = data._id
+    this._userId = data.currentId
+    this._toggleLike = toggleLike
   }
 
   _getTemplate() {
@@ -53,11 +65,16 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate()
+    this._heartIcon = this._element.querySelector('.elements__heart')
+    this._pictureElement = this._element.querySelector('.elements__image-test')
+
+    this._pictureElement.src = this._imageLink
+
     this._setEventListeners()
-    this._element.querySelector('.elements__title').textContent = this._name
-    this._element.querySelector(
-      '.elements__image'
-    ).style.backgroundImage = `url(${this._link})`
+    //this._element.querySelector('.elements__title').textContent = this._name
+    //this._element.querySelector(
+    //  '.elements__image'
+    //).style.backgroundImage = `url(${this._link})`
     return this._element
   }
 }
