@@ -10,6 +10,8 @@ export const modalNameInput = document.querySelector('.modal-name-input')
 export const modalOccupationInput = document.querySelector('#description-input')
 export const editFormEl = editModalWindow.querySelector('.form')
 export const addFormEl = addModalWindow.querySelector('.form')
+export const userForm = document.querySelector('.modal_edit_form')
+export const profilePicture = document.querySelector('.profile__image')
 
 export const formValidationConfig = {
   formSelector: '.form',

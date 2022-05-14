@@ -1,5 +1,4 @@
-import { userName } from '../utils/constants'
-
+import { userName, userOccupation } from '../utils/constants.js'
 export default class UserInfo {
   constructor({ userNameSelector, userJobSelector, pictureSelector }) {
     this._profileName = document.querySelector(userNameSelector)
@@ -14,9 +13,9 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo({ userName, userJob, userAvatar }) {
+  setUserInfo({ userName, userOccupation /*userAvatar*/ }) {
     this._profileName.textContent = userName
-    this._profileFunction.textContent = userJob
-    this._picture.src = userAvatar
+    this._profileFunction.textContent = userOccupation
+    //this._picture.src = userAvatar
   }
 }

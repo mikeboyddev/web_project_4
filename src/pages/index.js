@@ -1,10 +1,11 @@
 import '../pages/index.css'
+
 import FormValidator from '../components/FormValidator.js'
-import Card from '../components/Card.js'
-import Section from '../components/Section.js'
+
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
-import UserInfo from '../components/UserInfo.js'
+import { api, createCard, handleCardClick } from '../components/Api.js'
+import Api from '../components/Api.js'
 
 import {
   addModalWindow,
@@ -19,29 +20,24 @@ import {
   formValidationConfig,
   editFormEl,
   addFormEl,
+  userForm,
 } from '../utils/constants.js'
-import Api from '../components/Api'
 
-export const api = new Api({
+/*export const api = new Api({
   baseUrl: 'https://around.nomoreparties.co/v1/group-12',
   headers: {
     authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
     'Content-Type': 'application/json',
   },
-})
+})*/
 
-let section
-let currentId
-let popupConfirmation
-let toggleLike
-
-export const userInfo = new UserInfo({
+/*export const userInfo = new UserInfo({
   userNameSelector: '.profile__name',
   userJobSelector: '.profile__occupation',
   pictureSelector: '.profile__avatar',
-})
+})*/
 
-api
+/*api
   .initialize()
   .then((res) => {
     const [user, data] = res
@@ -73,37 +69,34 @@ api
 
     userInfo.setUserInfo({
       userName: user.name,
-      userJob: user.about,
+      userOccupation: user.about,
       userAvatar: user.avatar,
     })
   })
   .catch((err) => {
     console.log(err) // log the error to the console
   })
+  */
 
-const editPopup = new PopupWithForm(
-  {
-    popupEl: 'modal_type_edit',
-    handleFormSubmit: (inputValues) => {
-      userName.textContent = inputValues.name
-      userOccupation.textContent = inputValues.occupation
-    },
-  },
-  '.modal_type_edit'
-)
+const editPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_edit')
+
 editPopup.setEventListeners()
+api.getCards()
+api.getUser()
 
-const newCardPopup = new PopupWithForm(
-  {
-    popupEl: 'modal_type_add',
-    handleFormSubmit: (inputValues) => {
-      const addPlaceInput = inputValues.place
-      const addUrlInput = inputValues.url
-      renderCard({ name: addPlaceInput, link: addUrlInput }, cardsList)
-    },
-  },
-  '.modal_type_add'
-)
+function handleProfileSubmit(data) {
+  api.setNewUser(data)
+
+  userForm.reset()
+}
+
+function handlePlaceSubmit(data) {
+  api.addCard(data)
+  addCardForm.reset()
+}
+
+const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
+
 newCardPopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.pic-preview')
@@ -112,16 +105,7 @@ imagePopup.setEventListeners()
 //cardsList.renderItems()
 
 function openEditModal() {
-  modalNameInput.value = userName.textContent
-  modalOccupationInput.value = userOccupation.textContent
   editPopup.open()
-}
-
-function editFormSubmit(e) {
-  e.preventDefault()
-  userName.textContent = modalNameInput.value
-  userOccupation.textContent = modalOccupationInput.value
-  editPopup.close()
 }
 
 function openAddModal() {
@@ -137,10 +121,6 @@ function addFormSubmit(e) {
   e.preventDefault()
   newCardPopup._handleFormSubmit()
   newCardPopup.close()
-}
-
-function handleCardClick(data) {
-  imagePopup.open(data)
 }
 
 //Event Listeners
