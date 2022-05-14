@@ -22,7 +22,6 @@ export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl
     this._headers = headers
-    this._section = null
   }
 
   _handleResponse(res) {
@@ -37,6 +36,7 @@ export default class Api {
     fetch('https://around.nomoreparties.co/v1/group-12/cards', {
       headers: {
         authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => res.json())
@@ -65,6 +65,7 @@ export default class Api {
     fetch('https://around.nomoreparties.co/v1/group-12/users/me', {
       headers: {
         authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => res.json())
@@ -100,7 +101,10 @@ export default class Api {
   setNewUser({ userName, userOccupation }) {
     fetch('https://around.nomoreparties.co/v1/group-12/users/me', {
       method: 'PATCH',
-      headers: { authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1' },
+      headers: {
+        authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: userName,
         about: userOccupation,
