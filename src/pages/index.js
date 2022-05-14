@@ -36,9 +36,9 @@ function handlePlaceSubmit(data) {
   addCardForm.reset()
 }
 
-const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
+//const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
 
-newCardPopup.setEventListeners()
+//newCardPopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.pic-preview')
 imagePopup.setEventListeners()

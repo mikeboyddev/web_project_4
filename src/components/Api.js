@@ -33,11 +33,8 @@ export default class Api {
   }
 
   getCards() {
-    fetch('https://around.nomoreparties.co/v1/group-12/cards', {
-      headers: {
-        authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
-        'Content-Type': 'application/json',
-      },
+    fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
     })
       .then((res) => res.json())
       .then((result) => {
@@ -62,11 +59,8 @@ export default class Api {
   }
 
   getUser() {
-    fetch('https://around.nomoreparties.co/v1/group-12/users/me', {
-      headers: {
-        authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
-        'Content-Type': 'application/json',
-      },
+    fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
     })
       .then((res) => res.json())
       .then((result) => {
@@ -76,12 +70,8 @@ export default class Api {
   }
 
   addCard(data) {
-    fetch('https://around.nomoreparties.co/v1/group-12/cards', {
-      method: 'POST',
-      headers: {
-        authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
-        'Content-Type': 'application/json',
-      },
+    fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
       body: JSON.stringify({
         name: data.title,
         link: data.link,
@@ -99,12 +89,8 @@ export default class Api {
   }
 
   setNewUser({ userName, userOccupation }) {
-    fetch('https://around.nomoreparties.co/v1/group-12/users/me', {
-      method: 'PATCH',
-      headers: {
-        authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
-        'Content-Type': 'application/json',
-      },
+    fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
       body: JSON.stringify({
         name: userName,
         about: userOccupation,
