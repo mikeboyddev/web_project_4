@@ -1,11 +1,8 @@
 import '../pages/index.css'
-
 import FormValidator from '../components/FormValidator.js'
-
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import { api, createCard, handleCardClick } from '../components/Api.js'
-import Api from '../components/Api.js'
 
 import {
   addModalWindow,
@@ -23,61 +20,6 @@ import {
   userForm,
 } from '../utils/constants.js'
 
-/*export const api = new Api({
-  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
-  headers: {
-    authorization: '96b879ed-c9ef-4658-9fc3-439faa410fe1',
-    'Content-Type': 'application/json',
-  },
-})*/
-
-/*export const userInfo = new UserInfo({
-  userNameSelector: '.profile__name',
-  userJobSelector: '.profile__occupation',
-  pictureSelector: '.profile__avatar',
-})*/
-
-/*api
-  .initialize()
-  .then((res) => {
-    const [user, data] = res
-    section = new Section(
-      {
-        items: data,
-        renderer: (item) => {
-          currentId = user._id
-          const element = renderCard(
-            {
-              text: item.name,
-              imageLink: item.link,
-              likes: item.likes,
-              owner: item.owner._id,
-              _id: item._id,
-              currentId,
-            },
-            '#card-template',
-            handleCardClick,
-            popupConfirmation,
-            toggleLike
-          )
-          section.addItem(element)
-        },
-      },
-      '.elements'
-    )
-    section.renderItems()
-
-    userInfo.setUserInfo({
-      userName: user.name,
-      userOccupation: user.about,
-      userAvatar: user.avatar,
-    })
-  })
-  .catch((err) => {
-    console.log(err) // log the error to the console
-  })
-  */
-
 const editPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_edit')
 
 editPopup.setEventListeners()
@@ -85,9 +27,10 @@ api.getCards()
 api.getUser()
 
 function handleProfileSubmit(data) {
-  api.setNewUser(data)
-
+  console.log(data)
+  api.setNewUser({userName:data.name, userOccupation:data.about})
   userForm.reset()
+  editPopup.close()
 }
 
 function handlePlaceSubmit(data) {
@@ -95,9 +38,9 @@ function handlePlaceSubmit(data) {
   addCardForm.reset()
 }
 
-const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
+//const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
 
-newCardPopup.setEventListeners()
+//newCardPopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.pic-preview')
 imagePopup.setEventListeners()

@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/mikeboyddev/web_project_4#readme",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "core-js": "^3.19.1"
   },
   "devDependencies": {
@@ -37,7 +39,7 @@
     "mini-css-extract-plugin": "^2.4.4",
     "path": "^0.12.7",
     "postcss-loader": "^6.2.0",
-    "webpack": "^5.63.0",
+    "webpack": "^5.72.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
   },
