@@ -178,6 +178,30 @@
           <div class="modal__pic-name"></div>
         </div>
       </div>
+
+      <div class="modal modal__confirm">
+        <div class="modal__container">
+          <button class="button modal__button" type="button" aria-label="Close">
+            <img
+              src="<%=require('./images/close-btn.svg')%>"
+              alt="close me"
+              class="modal__cross"
+            />
+          </button>
+          <div class="modal__delete">
+            
+            <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
+            <button type="submit" class="button form__button modal__button-confirm button__type-create">Yes</button>  
+           </div> 
+        </div>
+    </div>
+
+
+
+
+
+
+
     </main>
 
     <footer class="footer container">
@@ -186,15 +210,16 @@
 
     <template id="card-template" class="card-template">
       <li class="elements__element">
-        <div class="elements__image">
-          <img class="elements__image_test" />
-
-          <button type="button" class="button">
-            <img
+        <img
               src="<%=require('./images/delete-button.svg')%>"
               alt="delete"
               class="elements__delete delete-button"
             />
+        <div class="elements__image">
+          <img class="elements__image_test" />
+
+          <button type="button" class="button">
+            
           </button>
         </div>
         <div class="elements__name">
@@ -205,8 +230,9 @@
               src="<%=require('./images/heart.svg')%>"
               alt="heart"
               class="elements__heart like-button"
-            />
+            /><div class="elements__likes"></div>
           </button>
+          
         </div>
       </li>
     </template>

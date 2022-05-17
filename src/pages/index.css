@@ -24,15 +24,20 @@
 @import url(../blocks/elements/__heart/_active/elements__heart_active.css);
 @import url(../blocks/elements/__name/elements__name.css);
 @import url(../blocks/elements/__delete/elements__delete.css);
+@import url(../blocks/elements/__likes/elements__likes.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/modal/modal.css);
 @import url(../blocks/modal/__button/modal__button.css);
 @import url(../blocks/modal/__container/modal__container.css);
+@import url(../blocks/modal/__confirm/modal__confirm.css);
 @import url(../blocks/modal/_enabled/modal_enabled.css);
 @import url(../blocks/modal/__cross/modal__cross.css);
 @import url(../blocks/modal/__container/_type/modal__container_type_preview.css);
 @import url(../blocks/modal/__preview-image/modal__preview-image.css);
 @import url(../blocks/modal/__pic-name/modal__pic-name.css);
+@import url(../blocks/modal/__delete/modal__delete.css);
+@import url(../blocks/modal/__title-confirm/modal__title-confirm.css);
+
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__input/form__input.css);
@@ -41,3 +46,4 @@
 @import url(../blocks/button/_inactive/button_inactive.css);
 @import url(../blocks/container/container.css);
 @import url(../blocks/container/_size/container__size_small.css);
+@import url(../blocks/modal/__button-confirm/modal__button-confirm.css);

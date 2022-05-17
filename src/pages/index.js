@@ -4,6 +4,7 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import { api, createCard, handleCardClick } from '../components/Api.js'
 
+
 import {
   addModalWindow,
   modalEditBtn,
@@ -19,6 +20,7 @@ import {
   addFormEl,
   userForm,
 } from '../utils/constants.js'
+import PopupWithDeleteConfirm from '../components/PopupWithDeleteConfirm'
 
 const editPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_edit')
 
@@ -34,16 +36,25 @@ function handleProfileSubmit(data) {
 }
 
 function handlePlaceSubmit(data) {
+  console.log(data)
   api.addCard(data)
   addCardForm.reset()
+  newCardPopup.close()
 }
 
-//const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
+const newCardPopup = new PopupWithForm(handlePlaceSubmit, '.modal_type_add')
 
-//newCardPopup.setEventListeners()
+newCardPopup.setEventListeners()
 
-const imagePopup = new PopupWithImage('.pic-preview')
-imagePopup.setEventListeners()
+function toggleLike(card) {
+  api.toggleLike(card.id, card.isLiked()).then((result) => {
+      card.setLikes(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}
+
 
 //cardsList.renderItems()
 
@@ -55,8 +66,8 @@ function openAddModal() {
   newCardPopup.open()
 }
 
-function renderCard(data, template, callback, popupConfirmation, toggleLike) {
-  const card = new Card(data, template, callback, popupConfirmation, toggleLike)
+function renderCard(data, template, callback, popupWithDeleteConfirm, toggleLike) {
+  const card = new Card(data, template, callback, popupWithDeleteConfirm, toggleLike)
   return card.generateCard()
 }
 

@@ -2,6 +2,27 @@ import Card from '../components/Card.js'
 import Section from '../components/Section.js'
 import { profilePicture, userName, userOccupation } from '../utils/constants.js'
 import UserInfo from '../components/UserInfo.js'
+import Popup from '../components/Popup.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithDeleteConfirm from '../components/PopupWithDeleteConfirm.js'
+
+
+function handleDeleteClick(card) {
+  
+  card.handleDelete();
+}
+
+
+const imagePopup = new PopupWithImage('.pic-preview')
+imagePopup.setEventListeners()
+
+
+
+const popupWithDeleteConfirm = new PopupWithDeleteConfirm(".modal__confirm", handleDeleteClick);
+popupWithDeleteConfirm.setEventListeners();
+
+
+
 
 export const userInfo = new UserInfo({
   userNameSelector: '.profile__name',
@@ -9,12 +30,13 @@ export const userInfo = new UserInfo({
   /* pictureSelector: '.profile__picture', */
 })
 
-export function createCard(data, template, callback) {
-  const card = new Card(data, template, callback)
+export function createCard(data, template, callback, popupWithDeleteConfirm, toggleLike) {
+  const card = new Card(data, template, callback, popupWithDeleteConfirm, toggleLike)
+  
   return card.generateCard()
 }
 
-export function handleCardClick({ data }) {
+export function handleCardClick(data) {
   imagePopup.open(data)
 }
 
@@ -43,9 +65,9 @@ export default class Api {
             items: result,
             renderer: (item) => {
               const element = createCard(
-                { text: item.name, imageLink: item.link },
+                { text: item.name, imageLink: item.link , likes: item.likes.length},
                 '#card-template',
-                handleCardClick
+                handleCardClick, popupWithDeleteConfirm
               )
               section.addItem(element)
             },
@@ -71,10 +93,11 @@ export default class Api {
 
   addCard(data) {
     fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.title,
-        link: data.link,
+        name: data.place,
+        link: data.url,
       }),
     })
       .then((res) => res.json())
@@ -82,7 +105,7 @@ export default class Api {
         const element = createCard(
           { text: result.name, imageLink: result.link },
           '#card-template',
-          handleCardClick
+          handleCardClick, popupWithDeleteConfirm
         )
         this._section.addItem(element)
       })
@@ -105,6 +128,14 @@ export default class Api {
         })
       )
   }
+
+  toggleLike(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this._headers
+    })
+    .then(res => this._handleResponse(res)); 
+ }
 }
 
 export const api = new Api({
