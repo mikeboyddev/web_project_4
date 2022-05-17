@@ -3,7 +3,10 @@ import FormValidator from '../components/FormValidator.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import { api, createCard, handleCardClick } from '../components/Api.js'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
 
 import {
   addModalWindow,
@@ -20,7 +23,10 @@ import {
   addFormEl,
   userForm,
 } from '../utils/constants.js'
+<<<<<<< HEAD
 import PopupWithDeleteConfirm from '../components/PopupWithDeleteConfirm'
+=======
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
 
 const editPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_edit')
 
@@ -29,8 +35,12 @@ api.getCards()
 api.getUser()
 
 function handleProfileSubmit(data) {
+<<<<<<< HEAD
   console.log(data)
   api.setNewUser({userName:data.name, userOccupation:data.about})
+=======
+  api.setNewUser(data)
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
   userForm.reset()
   editPopup.close()
 }
@@ -42,9 +52,13 @@ function handlePlaceSubmit(data) {
   newCardPopup.close()
 }
 
+<<<<<<< HEAD
 const newCardPopup = new PopupWithForm(handlePlaceSubmit, '.modal_type_add')
+=======
+//const newCardPopup = new PopupWithForm(handleProfileSubmit, '.modal_type_add')
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
 
-newCardPopup.setEventListeners()
+//newCardPopup.setEventListeners()
 
 function toggleLike(card) {
   api.toggleLike(card.id, card.isLiked()).then((result) => {

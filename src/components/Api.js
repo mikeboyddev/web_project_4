@@ -93,7 +93,10 @@ export default class Api {
 
   addCard(data) {
     fetch(`${this._baseUrl}/cards`, {
+<<<<<<< HEAD
       method: "POST",
+=======
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
       headers: this._headers,
       body: JSON.stringify({
         name: data.place,
@@ -113,7 +116,10 @@ export default class Api {
 
   setNewUser({ userName, userOccupation }) {
     fetch(`${this._baseUrl}/users/me`, {
+<<<<<<< HEAD
       method: "PATCH",
+=======
+>>>>>>> 66a8f31ed3813c31529567d844aaab84abbbb1ca
       headers: this._headers,
       body: JSON.stringify({
         name: userName,
