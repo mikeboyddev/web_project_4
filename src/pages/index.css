@@ -37,7 +37,9 @@
 @import url(../blocks/modal/__pic-name/modal__pic-name.css);
 @import url(../blocks/modal/__delete/modal__delete.css);
 @import url(../blocks/modal/__title-confirm/modal__title-confirm.css);
-
+@import url(../blocks/profile/__icon/profile__icon.css);
+@import url(../blocks/profile/__image-container/profile__image-container.css);
+@import url(../blocks/profile/__image-overlay/profile__image-overlay.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__input/form__input.css);

@@ -12,6 +12,14 @@ export const editFormEl = editModalWindow.querySelector('.form')
 export const addFormEl = addModalWindow.querySelector('.form')
 export const userForm = document.querySelector('.modal_edit_form')
 export const profilePicture = document.querySelector('.profile__image')
+export const likeSelector = document.querySelector('.elements__likes')
+export const editPictureSelector = document.querySelector('.modal__profile-image-popup')
+export const editProfilePictureButton = document.querySelector('.profile__avatar')
+export const pictureForm = document.querySelector('.form')
+export const pictureButton = document.querySelector('.profile__create-button')
+export const placeButton = document.querySelector('.elements__image-add')
+export const profileButton = document.querySelector('.profile__update-btn')
+
 
 export const formValidationConfig = {
   formSelector: '.form',
@@ -20,4 +28,12 @@ export const formValidationConfig = {
   inactiveButtonClass: 'button_inactive',
   inputErrorClass: 'form__error-message_visible',
   errorClass: 'form__error-message',
+}
+
+export const formValidationConfigPicture = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "button_inactive",
+  inputErrorClass: "form__error-message_visible",
+  errorClass: "form__error-message",
 }

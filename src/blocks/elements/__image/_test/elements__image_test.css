@@ -4,4 +4,5 @@
     object-fit: cover;
     display: block;
     cursor: pointer;
+    border-radius:10px;
 }

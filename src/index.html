@@ -17,12 +17,19 @@
 
     <main>
       <section class="profile container container_size_small">
-        <div class="profile__avatar">
+        <div class="profile__avatar profile__image-container">
           <img
-            alt="profile-image"
             class="profile__image"
             src="<%=require('./images/profile__image.png')%>"
+            alt="picture of default avatar"
           />
+          <div class="profile__image-overlay">
+            <img
+              src="<%=require('./images/profile__crayon.svg')%>"
+              alt="crayon icon"
+              class="profile__icon"
+            />
+          </div>
         </div>
         <div class="profile__info-wrapper">
           <div class="profile__name-wrapper">
@@ -99,7 +106,11 @@
               class="form__error-message"
             ></span>
 
-            <button class="button form__button" type="submit" aria-label="Save">
+            <button
+              class="button form__button profile__update-btn"
+              type="submit"
+              aria-label="Save"
+            >
               Save
             </button>
           </form>
@@ -150,7 +161,7 @@
             />
             <span id="url-input-error" class="form__error-message"></span>
             <button
-              class="button form__button button_type_create button_inactive"
+              class="button form__button button_type_create button_inactive elements__image-add"
               aria-label="Save"
               type="submit"
               disabled
@@ -189,19 +200,52 @@
             />
           </button>
           <div class="modal__delete">
-            
             <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
-            <button type="submit" class="button form__button modal__button-confirm button__type-create">Yes</button>  
-           </div> 
+            <button
+              type="submit"
+              class="button form__button modal__button-confirm button__type-create"
+            >
+              Yes
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
 
-
-
-
-
-
-
+      <div class="modal modal__profile-image-popup">
+        <div class="modal__container">
+          <button type="button" class="button modal__button" aria-label="Close">
+            <img
+              src="<%=require('./images/close-btn.svg')%>"
+              alt="close me"
+              class="modal__cross"
+            />
+          </button>
+          <h3 class="modal__title-confirm">Change profile picture</h3>
+          <form
+            action="#"
+            class="form modal__profile-image-form"
+            id="modal-profile-image-form"
+            name="modal-profile-image-form"
+          >
+            <input
+              class="form__input form__input_type_image"
+              name="avatar"
+              type="url"
+              placeholder="Profile Image"
+              id="url-input"
+              required
+            />
+            <span id="place-input-error" class="form__error-message"></span>
+            <button
+              class="button form__button button_type_create button_inactive profile__create-button"
+              aria-label="Save"
+              type="submit"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
     </main>
 
     <footer class="footer container">
@@ -211,16 +255,14 @@
     <template id="card-template" class="card-template">
       <li class="elements__element">
         <img
-              src="<%=require('./images/delete-button.svg')%>"
-              alt="delete"
-              class="elements__delete delete-button"
-            />
+          src="<%=require('./images/delete-button.svg')%>"
+          alt="delete"
+          class="elements__delete delete-button"
+        />
         <div class="elements__image">
           <img class="elements__image_test" />
 
-          <button type="button" class="button">
-            
-          </button>
+          <button type="button" class="button"></button>
         </div>
         <div class="elements__name">
           <h2 class="elements__title"></h2>
@@ -230,9 +272,9 @@
               src="<%=require('./images/heart.svg')%>"
               alt="heart"
               class="elements__heart like-button"
-            /><div class="elements__likes"></div>
+            />
+            <div class="elements__likes"></div>
           </button>
-          
         </div>
       </li>
     </template>
