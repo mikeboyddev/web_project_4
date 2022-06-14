@@ -107,7 +107,7 @@
             ></span>
 
             <button
-              class="button form__button button__update-btn"
+              class="button form__button update-btn"
               type="submit"
               aria-label="Save"
             >
@@ -161,7 +161,7 @@
             />
             <span id="url-input-error" class="form__error-message"></span>
             <button
-              class="button form__button button_type_create button_inactive button__image-add"
+              class="button form__button button_type_create button_inactive image-add"
               aria-label="Save"
               type="submit"
               disabled
@@ -192,22 +192,28 @@
 
       <div class="modal">
         <div class="modal__container">
-          <button class="button modal__button" type="button" aria-label="Close">
-            <img
-              src="<%=require('./images/close-btn.svg')%>"
-              alt="close me"
-              class="modal__cross"
-            />
-          </button>
-          <div class="modal__delete">
-            <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
+          <form class="form">
             <button
-              type="submit"
-              class="button form__button modal__button-confirm"
+              class="button modal__button"
+              type="button"
+              aria-label="Close"
             >
-              Yes
+              <img
+                src="<%=require('./images/close-btn.svg')%>"
+                alt="close me"
+                class="modal__cross"
+              />
             </button>
-          </div>
+            <div class="modal__delete">
+              <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
+              <button
+                type="submit"
+                class="button form__button modal__button-confirm"
+              >
+                Yes
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 

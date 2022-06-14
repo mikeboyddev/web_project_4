@@ -17,8 +17,8 @@ export const editPictureSelector = document.querySelector('.profile-image-popup'
 export const editProfilePictureButton = document.querySelector('.profile__avatar')
 export const pictureForm = document.querySelector('.form')
 export const pictureButton = document.querySelector('.create-button')
-export const placeButton = document.querySelector('.button__image-add')
-export const profileButton = document.querySelector('.button__update-btn')
+export const placeButton = document.querySelector('.image-add')
+export const profileButton = document.querySelector('.update-btn')
 
 
 export const formValidationConfig = {
