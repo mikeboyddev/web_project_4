@@ -1,8 +1,8 @@
 .elements__image_test {
-    width: 282px;
-    height: 282px;
-    object-fit: cover;
-    display: block;
-    cursor: pointer;
-    border-radius:10px;
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  border-radius: 10px;
 }
