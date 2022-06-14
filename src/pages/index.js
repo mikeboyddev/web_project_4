@@ -131,7 +131,7 @@ function handlePlaceSubmit(data) {
 //instantiate profile picture class
 const popupProfilePicture = new PopupWithForm(
   handlePictureSubmit,
-  ".modal__profile-image-popup"
+  ".profile-image-popup"
 );
 popupProfilePicture.setEventListeners();
 //handle submitting of profile picture
