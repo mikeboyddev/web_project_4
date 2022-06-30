@@ -19,6 +19,7 @@ export const pictureForm = document.querySelector('.form')
 export const pictureButton = document.querySelector('.create-button')
 export const placeButton = document.querySelector('.image-add')
 export const profileButton = document.querySelector('.update-btn')
+export const loadingText = "Saving..."
 
 
 export const formValidationConfig = {

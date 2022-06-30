@@ -1,8 +1,3 @@
-import {
-  profileButton,
-  placeButton,
-  pictureButton,
-} from "../utils/constants.js";
 
 export default class Api {
   constructor({ baseUrl, headers }) {
@@ -31,7 +26,7 @@ export default class Api {
   }
 
   addCard({ title, link }) {
-    placeButton.textContent = "Saving...";
+    
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -43,8 +38,7 @@ export default class Api {
   }
 
   setNewUser({ userName, userOccupation }) {
-    profileButton.textContent = "Saving...";
-    console.log(userName, userOccupation);
+    
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -63,7 +57,7 @@ export default class Api {
   }
 
   changePicture({ avatar }) {
-    pictureButton.textContent = "Saving...";
+    
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,

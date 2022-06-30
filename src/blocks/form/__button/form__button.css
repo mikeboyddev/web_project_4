@@ -15,9 +15,9 @@
   z-index: 20;
 }
 
-.form__button:hover {
+.form__button:hover:not(:disabled) { 
   opacity: 0.8;
-}
+} 
 
 @media screen and (max-width: 705px) {
   .form__button {

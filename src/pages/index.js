@@ -14,6 +14,9 @@ import {
   formValidationConfig,
   editFormEl,
   addFormEl,
+  pictureButton,
+  profileButton,
+  placeButton
 } from "../utils/constants.js";
 import PopupWithDeleteConfirm from "../components/PopupWithDeleteConfirm";
 
@@ -27,7 +30,7 @@ newCardPopup.setEventListeners();
 
 //declare vars needed later
 let section;
-let currentId;
+let userId;
 //instantiate popup with form class for profile
 const editPopup = new PopupWithForm(handleProfileSubmit, ".modal_type_edit");
 editPopup.setEventListeners();
@@ -47,7 +50,7 @@ api
       {
         items: data,
         renderer: (item) => {
-          const currentId = user._id;
+          const userId = user._id;
           const element = createCard(
             {
               text: item.name,
@@ -55,7 +58,7 @@ api
               likes: item.likes,
               owner: item.owner._id,
               _id: item._id,
-              currentId,
+              userId,
             },
             "#card-template",
             handleCardClick,
@@ -81,7 +84,7 @@ api
 
 // handle profile submit function
 function handleProfileSubmit(data) {
-  console.log(data);
+  editPopup.renderLoad(true)
   api
     .setNewUser({ userName: data.name, userOccupation: data.about })
     .then((data) => {
@@ -95,12 +98,16 @@ function handleProfileSubmit(data) {
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {});
+    .finally(() => {editPopup.renderLoad(false)});
 }
+// render card function
+
+
+
 
 //handle place submit function
 function handlePlaceSubmit(data) {
-  console.log(data);
+  newCardPopup.renderLoad(true)
   api
     .addCard({ title: data.place, link: data.url })
     .then((result) => {
@@ -110,23 +117,23 @@ function handlePlaceSubmit(data) {
           text: result.name,
           imageLink: result.link,
           likes: result.likes,
-          owner: currentId,
+          owner: userId,
           _id: result._id,
-          currentId,
+          userId,
         },
         "#card-template",
         handleCardClick,
         popupWithDeleteConfirm,
         toggleLike
       );
-      console.log(elementPlace);
+      
       section.addItem(elementPlace);
       newCardPopup.close();
     })
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {});
+    .finally(() => {newCardPopup.renderLoad(false)});
 }
 //instantiate profile picture class
 const popupProfilePicture = new PopupWithForm(
@@ -136,6 +143,7 @@ const popupProfilePicture = new PopupWithForm(
 popupProfilePicture.setEventListeners();
 //handle submitting of profile picture
 function handlePictureSubmit(data) {
+  popupProfilePicture.renderLoad(true)
   api
     .changePicture(data)
     .then((result) => {
@@ -150,7 +158,7 @@ function handlePictureSubmit(data) {
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {});
+    .finally(() => {popupProfilePicture.renderLoad(false)});
 }
 
 // set up event listeners for edit picture button
@@ -158,10 +166,11 @@ editProfilePictureButton.addEventListener("click", openProfilePicture);
 
 //toggle like function
 function toggleLike(card) {
-  console.log(card);
+  
   api
     .toggleLike(card._id, card.isLiked())
     .then((result) => {
+      console.log(result)
       card.setLikes(result);
     })
     .catch((err) => {
@@ -171,7 +180,7 @@ function toggleLike(card) {
 
 //instantitiate delete confirm popup
 const popupWithDeleteConfirm = new PopupWithDeleteConfirm(
-  ".modal__confirm",
+  ".modal__delete",
   handleDeleteClick
 );
 popupWithDeleteConfirm.setEventListeners();
@@ -200,6 +209,9 @@ export function handleCardClick(data) {
 
 //function to open user info edit
 function openEditModal() {
+  const { userName, userOccupation } = userInfo.getUserInfo();
+  modalNameInput.value = userName;
+  modalOccupationInput.value = userOccupation;
   editPopup.open();
 }
 
@@ -212,14 +224,10 @@ function handleDeleteClick(card) {
   card.handleDelete();
 }
 
-const imagePopup = new PopupWithImage(".pic-preview");
+const imagePopup = new PopupWithImage(".pic-preview",);
 imagePopup.setEventListeners();
 
-function addFormSubmit(e) {
-  e.preventDefault();
-  newCardPopup._handleFormSubmit();
-  newCardPopup.close();
-}
+
 
 
 
