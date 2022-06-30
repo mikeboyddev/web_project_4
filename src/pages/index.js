@@ -10,6 +10,8 @@ import {
   pictureForm,
   editProfilePictureButton,
   modalEditBtn,
+  modalNameInput,
+  modalOccupationInput,
   addModalBtn,
   formValidationConfig,
   editFormEl,
