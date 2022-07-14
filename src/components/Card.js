@@ -1,3 +1,5 @@
+
+
 const picPreview = document.querySelector(".pic-preview");
 const previewImageElement = document.querySelector(".modal__preview-image");
 const previewNameElement = document.querySelector(".modal__pic-name");
@@ -8,7 +10,7 @@ class Card {
     data,
     cardSelector,
     handleCardClick,
-    popupWithDeleteConfirm,
+    handleDeleteClick,
     toggleLike
   ) {
     console.log(data)
@@ -17,11 +19,13 @@ class Card {
     this._likes = data.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    this._popupWithDeleteConfirm = popupWithDeleteConfirm;
+    this._handleDeleteClick = handleDeleteClick;
     this._ownerId = data.owner;
     this._id = data._id;
     this._userId = data.userId;
     this._toggleLike = toggleLike;
+   // this._isLiked = this._likesArray.includes(this._userId);
+    
    
   }
 
@@ -34,29 +38,46 @@ class Card {
     return cardElement;
   }
 
-  setLikes(result) {
-    this._heartIcon.classList.toggle('elements__heart_active');
- 
-    this._likeSelector.textContent = result.likes.length; 
+  setLikes(likes) { 
+    // set instance variable
+    
+     this._likes = likes;
+     this._renderLikes()
+     
+ } 
 
+  _renderLikes() {
+    if (this._isLiked) {
+      console.log('render')
+      this._heartIcon.classList.add('elements__heart_active');
+     // this._likeSelector.textContent = this._likes.likes.length;
+  } else {
+    this._heartIcon.classList.remove('elements__heart_active');
+   //this._likeSelector.textContent = this._likes.likes.length;
   }
+}
+  
 
 
   
   
 
   handleDelete() {
+   
     this._element.remove();
-    this._element = null;
+        this._element = null;
+
+    
   }
 
   _setEventListeners() {
     this._heartIcon.addEventListener("click", () => {
+      console.log(this._toggleLike)
         this._toggleLike(this);
     });
       if(this._deleteIcon){ 
         this._deleteIcon.addEventListener("click", () => {
-          this._popupWithDeleteConfirm.open(this);
+          this._handleDeleteClick();
         });
       }
       this._pictureElement.addEventListener("click", (evt) => {
@@ -74,16 +95,17 @@ class Card {
     this._name = this._element.querySelector(".elements__title");
     this._element.querySelector(".elements__title").textContent = this._text;
     this._deleteIcon = this._element.querySelector(".elements__delete");
-    if(this._likes.some(item => item._id === this._userId)) {
-      this._heartIcon.classList.add('elements__heart_active');
-    }
+   
+   
+    
     if(this._ownerId !== this._userId) {
       this._deleteIcon.remove();
     }
     this._pictureElement.src = this._imageLink;
     this._pictureElement.alt = this._text;
-    this._setEventListeners();
     
+    this._renderLikes();
+    this._setEventListeners();
     return this._element;
   }
 

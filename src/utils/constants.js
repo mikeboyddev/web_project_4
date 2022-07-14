@@ -31,10 +31,3 @@ export const formValidationConfig = {
   errorClass: 'form__error-message',
 }
 
-export const formValidationConfigPicture = {
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__button",
-  inactiveButtonClass: "button_inactive",
-  inputErrorClass: "form__error-message_visible",
-  errorClass: "form__error-message",
-}
