@@ -84,7 +84,7 @@ api
             },
             "#card-template",
             handleCardClick,
-            handleDeleteClick,
+            popupWithDeleteConfirm,
             toggleLike
           );
           section.addItem(element);
@@ -145,7 +145,7 @@ function handlePlaceSubmit(data) {
         },
         "#card-template",
         handleCardClick,
-        handleDeleteClick,
+        popupWithDeleteConfirm,
         toggleLike
       );
       
@@ -203,14 +203,14 @@ export function createCard(
   data,
   template,
   callback,
-  handleDeleteClick,
+  popupWithDeleteConfirm,
   toggleLike
 ) {
   const card = new Card(
     data,
     template,
     callback,
-    handleDeleteClick,
+    popupWithDeleteConfirm,
     toggleLike
   );
 
@@ -235,14 +235,19 @@ function openAddModal() {
   newCardPopup.open();
 }
 
-export function handleDeleteClick() {
-  
-  
-  popupWithDeleteConfirm.open()
-}
 
-function handleDeleteConfirmClick() {
-  card.handleDelete();
+
+function handleDeleteConfirmClick(card) {
+  console.log(card)
+  api
+    .deletePost(card._id)
+    .then(() => {
+      popupWithDeleteConfirm.close();
+      card.handleDelete();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 const imagePopup = new PopupWithImage(".pic-preview",);

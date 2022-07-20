@@ -4,18 +4,21 @@ export default class PopupWithDeleteConfirm extends Popup {
   constructor(handleClick, popupSelector) {
     super(popupSelector);
     this._handleClick = handleClick;
-    this._button = document.querySelector(".modal__button-confirm");
+    this._form = this._popupEl.querySelector(".form");
+    
   }
 
   open(card) {
     super.open();
     this._card = card;
+    console.log(this._card)
   }
 
   setEventListeners() {
    
     super.setEventListeners();
-    this._button.addEventListener('click', () => {
+    this._form.addEventListener('submit', (e) => {
+      e.preventDefault();
       this._handleClick(this._card);
   });
   }

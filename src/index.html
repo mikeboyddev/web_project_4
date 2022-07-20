@@ -219,6 +219,12 @@
 
       <div class="modal profile-image-popup">
         <div class="modal__container">
+          <form
+            action="#"
+            class="form modal__profile-image-form"
+            id="modal-profile-image-form"
+            name="modal-profile-image-form"
+          >
           <button type="button" class="button modal__button" aria-label="Close">
             <img
               src="<%=require('./images/close-btn.svg')%>"
@@ -227,12 +233,7 @@
             />
           </button>
           <h3 class="modal__title-confirm">Change profile picture</h3>
-          <form
-            action="#"
-            class="form modal__profile-image-form"
-            id="modal-profile-image-form"
-            name="modal-profile-image-form"
-          >
+          
             <input
               class="form__input form__input_type_image"
               name="avatar"
@@ -246,6 +247,7 @@
               class="button form__button button_type_create button_inactive image-add"
               aria-label="Save"
               type="submit"
+              disabled
             >
               Save
             </button>
