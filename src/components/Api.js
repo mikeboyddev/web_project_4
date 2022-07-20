@@ -1,4 +1,3 @@
-
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -26,7 +25,6 @@ export default class Api {
   }
 
   addCard({ title, link }) {
-    
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -38,7 +36,6 @@ export default class Api {
   }
 
   setNewUser({ userName, userOccupation }) {
-    
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -57,7 +54,6 @@ export default class Api {
   }
 
   changePicture({ avatar }) {
-    
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -67,12 +63,11 @@ export default class Api {
     }).then((res) => this._handleResponse(res));
   }
 
-
-deletePost(id) {
-  return fetch(`${this._baseUrl}/cards/${id}`, {
-    method: "DELETE",
-    headers: this._headers, 
-  }).then((res) => this._handleResponse(res));
+  deletePost(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._handleResponse(res));
   }
 }
 export const api = new Api({

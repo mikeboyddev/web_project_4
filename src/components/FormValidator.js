@@ -29,7 +29,7 @@ class FormValidator {
   }
 
   _checkInputValidity(input) {
-    console.log('check')
+    
     if (input.validity.valid) {
       this._hideInputError(input);
     } else {
@@ -44,7 +44,6 @@ class FormValidator {
     } else {
       this._submitButton.classList.remove(this._inactiveButtonClass);
       this._submitButton.removeAttribute("disabled");
-      
     }
   }
 
@@ -52,14 +51,12 @@ class FormValidator {
     return this._formInputs.some((input) => {
       return !input.validity.valid;
     });
-    
   }
 
   _setEventListeners() {
     this._inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
-    
 
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
@@ -74,7 +71,6 @@ class FormValidator {
   }
 
   enableValidation() {
-    
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this.toggleButtonState();

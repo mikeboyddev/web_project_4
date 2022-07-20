@@ -14,12 +14,8 @@ import {
   modalOccupationInput,
   addModalBtn,
   formValidationConfig,
-  formValidationConfigPicture,
   editFormEl,
   addFormEl,
-  pictureButton,
-  profileButton,
-  placeButton
 } from "../utils/constants.js";
 import PopupWithDeleteConfirm from "../components/PopupWithDeleteConfirm";
 
@@ -47,11 +43,10 @@ addFormValidator.enableValidation();
 
 //instantitiate delete confirm popup
 const popupWithDeleteConfirm = new PopupWithDeleteConfirm(
-  handleDeleteConfirmClick,".modal__delete"
-  
+  handleDeleteConfirmClick,
+  ".modal__delete"
 );
 popupWithDeleteConfirm.setEventListeners();
-
 
 //instantiate popup with form class for profile
 const editPopup = new PopupWithForm(handleProfileSubmit, ".modal_type_edit");
@@ -106,7 +101,7 @@ api
 
 // handle profile submit function
 function handleProfileSubmit(data) {
-  editPopup.renderLoad(true)
+  editPopup.renderLoad(true);
   api
     .setNewUser({ userName: data.name, userOccupation: data.about })
     .then((data) => {
@@ -120,20 +115,18 @@ function handleProfileSubmit(data) {
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {editPopup.renderLoad(false)});
+    .finally(() => {
+      editPopup.renderLoad(false);
+    });
 }
 // render card function
 
-
-
-
 //handle place submit function
 function handlePlaceSubmit(data) {
-  newCardPopup.renderLoad(true)
+  newCardPopup.renderLoad(true);
   api
     .addCard({ title: data.place, link: data.url })
     .then((result) => {
-      console.log(result);
       const elementPlace = createCard(
         {
           text: result.name,
@@ -148,21 +141,23 @@ function handlePlaceSubmit(data) {
         popupWithDeleteConfirm,
         toggleLike
       );
-      
+
       section.addItem(elementPlace);
       newCardPopup.close();
-      console.log('toggle button state')
-      addFormValidator.toggleButtonState()
+      console.log("toggle button state");
+      addFormValidator.toggleButtonState();
     })
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {newCardPopup.renderLoad(false)});
+    .finally(() => {
+      newCardPopup.renderLoad(false);
+    });
 }
 
 //handle submitting of profile picture
 function handlePictureSubmit(data) {
-  popupProfilePicture.renderLoad(true)
+  popupProfilePicture.renderLoad(true);
   api
     .changePicture(data)
     .then((result) => {
@@ -178,7 +173,9 @@ function handlePictureSubmit(data) {
     .catch((err) => {
       console.log(err); // log the error to the console
     })
-    .finally(() => {popupProfilePicture.renderLoad(false)});
+    .finally(() => {
+      popupProfilePicture.renderLoad(false);
+    });
 }
 
 // set up event listeners for edit picture button
@@ -186,18 +183,15 @@ editProfilePictureButton.addEventListener("click", openProfilePicture);
 
 //toggle like function
 function toggleLike(card) {
-  
   api
     .toggleLike(card._id, card.isLiked())
     .then((likes) => {
-      console.log(likes)
-      card.setLikes(likes);
+      card.setLikes(likes.likes);
     })
     .catch((err) => {
       console.log(err);
     });
 }
-
 
 export function createCard(
   data,
@@ -225,7 +219,7 @@ export function handleCardClick(data) {
 function openEditModal() {
   const { userName, userOccupation } = userInfo.getUserInfo();
   modalNameInput.value = userName;
-  
+
   modalOccupationInput.value = userOccupation;
   editPopup.open();
 }
@@ -235,10 +229,7 @@ function openAddModal() {
   newCardPopup.open();
 }
 
-
-
 function handleDeleteConfirmClick(card) {
-  console.log(card)
   api
     .deletePost(card._id)
     .then(() => {
@@ -250,15 +241,10 @@ function handleDeleteConfirmClick(card) {
     });
 }
 
-const imagePopup = new PopupWithImage(".pic-preview",);
+const imagePopup = new PopupWithImage(".pic-preview");
 imagePopup.setEventListeners();
 
-
-
-
-
 //validation
-
 
 const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
 editFormValidator.enableValidation();
