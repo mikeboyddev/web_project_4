@@ -204,17 +204,17 @@
                 class="modal__cross"
               />
             </button>
-            
-              <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
-              <button
-                type="submit"
-                class="button form__button modal__button-confirm"
-              >
-                Yes
-              </button>
-            
-          </form>
-        </div>
+
+            <h3 class="modal__title modal__title-confirm">Are you sure?</h3>
+            <button
+              type="submit"
+              class="button form__button modal__button-confirm"
+            >
+              Yes
+            </button>
+         </div>
+         </form>
+        
       </div>
 
       <div class="modal profile-image-popup">
@@ -225,15 +225,19 @@
             id="modal-profile-image-form"
             name="modal-profile-image-form"
           >
-          <button type="button" class="button modal__button" aria-label="Close">
-            <img
-              src="<%=require('./images/close-btn.svg')%>"
-              alt="close me"
-              class="modal__cross"
-            />
-          </button>
-          <h3 class="modal__title-confirm">Change profile picture</h3>
-          
+            <button
+              type="button"
+              class="button modal__button"
+              aria-label="Close"
+            >
+              <img
+                src="<%=require('./images/close-btn.svg')%>"
+                alt="close me"
+                class="modal__cross"
+              />
+            </button>
+            <h3 class="modal__title-confirm">Change profile picture</h3>
+
             <input
               class="form__input form__input_type_image"
               name="avatar"
