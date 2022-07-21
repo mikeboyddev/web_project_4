@@ -51,7 +51,6 @@ class Card {
 
   _setEventListeners() {
     this._heartIcon.addEventListener("click", () => {
-      
       this._toggleLike(this);
     });
     if (this._deleteIcon) {

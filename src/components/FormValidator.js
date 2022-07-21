@@ -29,7 +29,6 @@ class FormValidator {
   }
 
   _checkInputValidity(input) {
-    
     if (input.validity.valid) {
       this._hideInputError(input);
     } else {
