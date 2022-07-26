@@ -24,7 +24,8 @@ export const pictureForm = picModalWindow.querySelector(".form");
 export const pictureButton = document.querySelector(".create-button");
 export const placeButton = document.querySelector(".image-add");
 export const profileButton = document.querySelector(".update-btn");
-export const loadingText = "Saving...";
+export const savingText = "Saving...";
+export const loadingText = "Loading...";
 
 export const formValidationConfig = {
   formSelector: ".form",

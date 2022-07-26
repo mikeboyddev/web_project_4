@@ -79,7 +79,7 @@ api
             },
             "#card-template",
             handleCardClick,
-            popupWithDeleteConfirm,
+            handleTrashButtonClick,
             toggleLike
           );
           section.addItem(element);
@@ -124,6 +124,7 @@ function handleProfileSubmit(data) {
 //handle place submit function
 function handlePlaceSubmit(data) {
   newCardPopup.renderLoad(true);
+  // addFormValidator.toggleButtonState();
   api
     .addCard({ title: data.place, link: data.url })
     .then((result) => {
@@ -138,14 +139,13 @@ function handlePlaceSubmit(data) {
         },
         "#card-template",
         handleCardClick,
-        popupWithDeleteConfirm,
+        handleTrashButtonClick,
         toggleLike
       );
 
       section.addItem(elementPlace);
       newCardPopup.close();
       console.log("toggle button state");
-      addFormValidator.toggleButtonState();
     })
     .catch((err) => {
       console.log(err); // log the error to the console
@@ -158,6 +158,7 @@ function handlePlaceSubmit(data) {
 //handle submitting of profile picture
 function handlePictureSubmit(data) {
   popupProfilePicture.renderLoad(true);
+  //pictureValidator.toggleButtonState();
   api
     .changePicture(data)
     .then((result) => {
@@ -168,7 +169,6 @@ function handlePictureSubmit(data) {
         userAvatar: result.avatar,
       });
       popupProfilePicture.close();
-      pictureValidator.toggleButtonState();
     })
     .catch((err) => {
       console.log(err); // log the error to the console
@@ -185,8 +185,8 @@ editProfilePictureButton.addEventListener("click", openProfilePicture);
 function toggleLike(card) {
   api
     .toggleLike(card._id, card.isLiked())
-    .then((likes) => {
-      card.setLikes(likes.likes);
+    .then((likesData) => {
+      card.setLikes(likesData.likes);
     })
     .catch((err) => {
       console.log(err);
@@ -197,14 +197,14 @@ export function createCard(
   data,
   template,
   callback,
-  popupWithDeleteConfirm,
+  handleTrashButtonClick,
   toggleLike
 ) {
   const card = new Card(
     data,
     template,
     callback,
-    popupWithDeleteConfirm,
+    handleTrashButtonClick,
     toggleLike
   );
 
@@ -230,15 +230,21 @@ function openAddModal() {
 }
 
 function handleDeleteConfirmClick(card) {
+  popupWithDeleteConfirm.renderLoad(true);
+
   api
-    .deletePost(card._id)
+    .deletePost(card)
     .then(() => {
+      card.handleDelete(card);
       popupWithDeleteConfirm.close();
-      card.handleDelete();
     })
     .catch((err) => {
       console.log(err);
     });
+}
+
+function handleTrashButtonClick(card) {
+  popupWithDeleteConfirm.open(card);
 }
 
 const imagePopup = new PopupWithImage(".pic-preview");

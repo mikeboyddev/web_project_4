@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { loadingText } from "../utils/constants.js";
+import { savingText } from "../utils/constants.js";
 
 export default class PopupWithForm extends Popup {
   constructor(handleFormSubmit, popupSelector) {
@@ -27,7 +27,7 @@ export default class PopupWithForm extends Popup {
 
   renderLoad(isLoading) {
     if (isLoading) {
-      this._submitButton.textContent = loadingText;
+      this._submitButton.textContent = savingText;
     } else {
       this._submitButton.textContent = this._submitButtonText;
     }

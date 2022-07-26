@@ -3,16 +3,15 @@ class Card {
     data,
     cardSelector,
     handleCardClick,
-    popupWithDeleteConfirm,
+    handleTrashButtonClick,
     toggleLike
   ) {
-    console.log(data);
     this._text = data.text;
     this._imageLink = data.imageLink;
     this._likes = data.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    this._popupWithDeleteConfirm = popupWithDeleteConfirm;
+    this._handleTrashButtonClick = handleTrashButtonClick;
     this._ownerId = data.owner;
     this._id = data._id;
     this._userId = data.userId;
@@ -55,7 +54,7 @@ class Card {
     });
     if (this._deleteIcon) {
       this._deleteIcon.addEventListener("click", () => {
-        this._popupWithDeleteConfirm.open(this);
+        this._handleTrashButtonClick(this._id);
       });
     }
     this._pictureElement.addEventListener("click", (evt) => {
